@@ -28,13 +28,13 @@ void Game::fight(Character& ch01, Character& ch02) const {
 	while (ch02.getHealth() > 0 and ch01.getHealth() > 0)
 	{
 		if (ch02.getHealth() > 0) {
-			ch02.healthLoss(ch01.getDamage());
+			ch02.healthLoss(ch01);
 			Game::printAttack(ch01, ch02);
 			Game::printStatus(ch01, ch02);
 		}
 
 		if (ch01.getHealth() > 0 and ch02.getHealth() > 0) {
-			ch01.healthLoss(ch02.getDamage());
+			ch01.healthLoss(ch02);
 			Game::printAttack(ch02, ch01);
 			Game::printStatus(ch01, ch02);
 		}
