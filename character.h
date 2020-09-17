@@ -15,10 +15,10 @@
 
 	public:
 		Character(std::string name, int health, int damage);		
-		void healthloss(int damage);
-		int getdamage();
-		int gethealth();
-		std::string getname();
+		void healthLoss(int damage);
+		int getDamage() const;
+		int getHealth() const;
+		std::string getName() const;
 
 
 	};

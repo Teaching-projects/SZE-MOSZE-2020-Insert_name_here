@@ -1,17 +1,15 @@
 #ifndef GAME_H
 #define GAME_H
-#include <string>
-#include <iostream>
 #include "character.h"
 
 
 class Game {
 	private:		
-		void print_attack(Character attacker, Character defender);
-		void print_status(Character ch01, Character ch02);
-		void print_whowins(Character ch01, Character ch02);
+		void printAttack(Character attacker, Character defender) const;
+		void printStatus(Character ch01, Character ch02) const;
+		void printWhoWins(Character ch01, Character ch02) const;
 
 	public:		
-		void fight(Character& ch01, Character& ch02);
+		void fight(Character& ch01, Character& ch02) const;
 };
 #endif
