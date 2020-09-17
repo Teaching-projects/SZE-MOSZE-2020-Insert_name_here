@@ -15,7 +15,7 @@
 
 	public:
 		Character(const std::string& name, int health, int damage);
-		void healthLoss(Character Attacker);
+		void healthLoss(const Character* Attacker) ;
 		int getDamage() const;
 		int getHealth() const;
 		std::string getName() const;

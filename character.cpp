@@ -8,8 +8,8 @@ int Character::getHealth() const { return health; }
 
 
 
-void Character::healthLoss(Character Attacker) {
-	health -= Attacker.damage;
+void Character::healthLoss(const Character* Attacker) {
+	health -= Attacker->damage;
 	if (health < 0) { health = 0; }
 
 }
