@@ -12,11 +12,11 @@
 		const int damage;
 
 	public:
-		Character(const std::string& name, int health, const int& damage);		
-		void reduceHealthByDamage(Character& attacker);
+		Character(std::string name, int health, int damage);		
+		void reduceHealthByDamage(const Character& attacker);
 		int getDamage() const;
 		int getHealth() const;
-		std::string getName() const;
+		const std::string& getName() const;
 
 
 	};

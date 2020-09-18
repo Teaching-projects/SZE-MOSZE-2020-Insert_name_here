@@ -5,7 +5,7 @@
 
 
 
-void Game::printAttack(Character &attacker, Character &defender) const {
+void Game::printAttack(const Character &attacker,const Character &defender) const {
 	std::cout << attacker.getName() << " -> " << defender.getName() << '\n';
 }
 
@@ -43,6 +43,6 @@ void Game::fight() {
 }
 
 
-void Game::addCharacter(Character& ch) {
+void Game::addCharacter(const Character& ch) {
 	CH.push_back(ch);
 }

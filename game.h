@@ -9,12 +9,12 @@
 class Game {
 	private:	
 		std::vector<Character> CH;
-		void printAttack(Character &attacker, Character &defender) const;
+		void printAttack(const Character &attacker,const Character &defender) const;
 		void printStatus() const;
 		void printWhoWins() const;
 
 	public:		
 		void fight();
-		void addCharacter(Character& ch);
+		void addCharacter(const Character& ch);
 };
 #endif
