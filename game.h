@@ -9,9 +9,9 @@
 class Game {
 	private:	
 		std::vector<Character> CH;
-		void printAttack(Character attacker, Character defender) const;
-		void printStatus(Character ch01, Character ch02) const;
-		void printWhoWins(Character ch01, Character ch02) const;
+		void printAttack(Character &attacker, Character &defender) const;
+		void printStatus() const;
+		void printWhoWins() const;
 
 	public:		
 		void fight();
