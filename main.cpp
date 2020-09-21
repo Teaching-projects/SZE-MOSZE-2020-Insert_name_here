@@ -1,19 +1,27 @@
 #include "character.h"
 #include "game.h"
-
+#include <iostream>
 
 
 
 int main(int argc, char *argv[]) {
-	Character ch01(argv[1], std::stoi(argv[2]), std::stoi(argv[3]));
-	Character ch02(argv[4], std::stoi(argv[5]), std::stoi(argv[6]));
+	
 
-	Game G;
 
-	G.addCharacter(ch01);
-	G.addCharacter(ch02);
-	G.fight();
+	if (argc == 3) try{
+		
+		Game G;
 
+		G.addCharacter(argv[1]);
+		G.addCharacter(argv[2]);
+		G.fight();
+	}
+	catch (std::string fileError) {
+		std::cout << fileError;
+	}
+	else {
+		std::cout << "Incorrect number of arguments.";
+	}
 
 	return 0;
 }

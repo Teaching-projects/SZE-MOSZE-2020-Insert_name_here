@@ -10,14 +10,15 @@
 		const std::string name;
 		int health;
 		const int damage;
+		friend class Game;
 
 	public:
-		Character(const std::string& name, int health, int damage);		
+		Character(std::string name, int health, int damage);		
 		void reduceHealthByDamage(const Character& attacker);
 		int getDamage() const;
 		int getHealth() const;
 		const std::string& getName() const;
 
-
+		static Character parseUnit(const std::string& fname);
 	};
 	#endif
