@@ -9,7 +9,7 @@
 void Game::printWhoWins() const {
 	int winner;
 	CH[1].getHealth() > 0 ? winner = 1 : winner=0;
-		std::cout << CH[winner].getName() << " wins. Remaining HP: "<< CH[winner].getHealth();
+		std::cout << CH[winner].getName() << " wins. Remaining HP: "<< CH[winner].getHealth()<<'\n';
 }
 void Game::fight() {
 	int n = 0;
