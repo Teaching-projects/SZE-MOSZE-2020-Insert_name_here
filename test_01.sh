@@ -11,3 +11,8 @@ do
 		fi
 	done
 done
+DIFF=$(diff  output.txt expected_output.txt)
+if [ "$DIFF" ]
+then	
+		echo "Output is different than expected output."
+fi
