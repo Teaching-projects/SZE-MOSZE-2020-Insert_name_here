@@ -3,7 +3,7 @@
 
 
 
-Character::Character(std::string name, int health, int damage) :name(name), health(health), damage(damage) {}
+Character::Character(const std::string& name, int health, int damage) :name(name), health(health), damage(damage) {}
 const std::string& Character::getName() const { return  name; }
 int Character::getDamage() const { return damage; }
 int Character::getHealth() const { return health; }

@@ -13,7 +13,7 @@
 		friend class Game;
 
 	public:
-		Character(std::string name, int health, int damage);		
+		Character(const std::string& name, int health, int damage);		
 		void reduceHealthByDamage(const Character& attacker);
 		int getDamage() const;
 		int getHealth() const;
