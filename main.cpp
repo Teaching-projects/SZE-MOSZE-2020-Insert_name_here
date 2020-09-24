@@ -5,24 +5,18 @@
 
 
 int main(int argc, char *argv[]) {
-	
+	if (argc != 3) {std::cout << "Incorrect number of arguments."; return 1;}
 
-
-	if (argc == 3) try{
-		
-		Game G;
-
-		G.addCharacter(argv[1]);
-		G.addCharacter(argv[2]);
-		G.fight();
+	try{	
+	Game G;
+	G.addCharacter(argv[1]);
+	G.addCharacter(argv[2]);
+	G.fight();
 	}
 	catch (std::string fileError) {
 		std::cout << fileError;
+		return 1;
 	}
-	else {
-		std::cout << "Incorrect number of arguments.";
-	}
-
 	return 0;
 }
 
