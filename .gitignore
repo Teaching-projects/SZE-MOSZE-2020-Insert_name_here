@@ -1,0 +1,16 @@
+*
+
+
+!.gitignore
+!*.cpp
+!*.h
+!*.md
+!*.json
+!*.sh
+!*.txt
+!*.yml
+
+
+!units
+!.github
+!workflows
