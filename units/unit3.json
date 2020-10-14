@@ -1,5 +1,6 @@
 {
   "name" : "Rotfiend",
   "hp" : 100,
-  "dmg" : 35
+  "dmg" : 35,
+  "attackspeed" :  1.25
 }
