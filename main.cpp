@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	}
-	catch (std::string fileError) {
+	catch (std::string &fileError) {
 		std::cout << fileError;
 		return 1;
 	}
