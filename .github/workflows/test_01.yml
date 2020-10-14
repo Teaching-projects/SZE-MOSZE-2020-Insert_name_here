@@ -17,7 +17,7 @@ jobs:
         run: diff output.txt expected_output.txt
         
 
-   code_analysis:     
+  code_analysis:     
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
