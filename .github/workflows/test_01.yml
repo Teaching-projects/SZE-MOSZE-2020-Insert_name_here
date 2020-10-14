@@ -24,4 +24,9 @@ jobs:
       - name: Run test_check_warnings.sh
         run: ./test_check_warnings.sh
 
+      - name: Make test_style_and_performance.sh executable
+        run: chmod +x ./test_style_and_performance.sh
+      - name: Run test_style_and_performance.sh
+        run: ./test_style_and_performance.sh
+
         
