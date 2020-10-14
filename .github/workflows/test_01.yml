@@ -16,3 +16,12 @@ jobs:
       - name: Diff2
         run: diff output.txt expected_output.txt
         
+
+      - name: Install cppcheck
+        run: sudo apt-get install cppcheck
+      - name: Make test_check_warnings.sh executable
+        run: chmod +x ./test_check_warnings.sh
+      - name: Run test_check_warnings.sh
+        run: ./test_check_warnings.sh
+
+        
