@@ -3,20 +3,20 @@
 #include <string>
 
 
-
+	class Player;
 	class Character {
 
-	private:
+	protected:
 		const std::string name;
-		int health;
-		const int damage;
-		friend class Game;
+		double health;
+		double damage;
 
 	public:
-		Character(const std::string& name, int health, int damage);		
-		void reduceHealthByDamage(const Character& attacker);
-		int getDamage() const;
-		int getHealth() const;
+		Character(const std::string& name, double health, double damage);		
+		void reduceHealthByDamage(Character& attacker);
+		void reduceHealthByDamage(Player& attacker);
+		double getDamage() const;
+		double getHealth() const;
 		const std::string& getName() const;
 
 		static Character parseUnit(const std::string& fname);

@@ -7,12 +7,14 @@
 
 
 class Game {
-	private:	
+	private:
 		std::vector<Character> CH;
-		void printWhoWins() const;
 
 	public:	
+		void printWhoWins(Character attacker, Character defender) const;
 		void fight();
 		void addCharacter(const std::string& fname);
+		template<class T1, class T2> void
+			attack(T1& attacker, T2& defender);
 };
 #endif
