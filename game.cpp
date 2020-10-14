@@ -5,7 +5,7 @@
 
 
 
-void Game::printWhoWins(Character attacker, Character defender) const {
+void Game::printWhoWins(const Character &attacker, const Character &defender) const {
 	if (attacker.getHealth() > 0) std::cout << attacker.getName() << " wins. Remaining HP: " << attacker.getHealth() << '\n';
 	else std::cout << defender.getName() << " wins. Remaining HP: " << defender.getHealth() << '\n';
 }
