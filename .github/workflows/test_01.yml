@@ -16,6 +16,11 @@ jobs:
       - name: Diff2
         run: diff output.txt expected_output.txt
         
+      - name: Install valgrind
+        run: sudo apt-get install valgrind
+      - name: Check Leaks
+        run: valgrind --leak-check=full --error-exitcode=1 --log-file=memory_leaks.txt ./a.out units/unit1.json units/unit2.json
+
 
       - name: Install cppcheck
         run: sudo apt-get install cppcheck
