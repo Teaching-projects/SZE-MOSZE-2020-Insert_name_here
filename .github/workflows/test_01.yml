@@ -3,7 +3,7 @@ name: test01_workflow
 on: push
 
 jobs:
-  build:
+  build_and_output_tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -17,8 +17,8 @@ jobs:
         run: diff output.txt expected_output.txt
         
 
-        
-runs-on: ubuntu-latest
+   code_analysis:     
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Build
