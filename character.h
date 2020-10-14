@@ -1,15 +1,15 @@
 /**
- *  \class Character
+ * \class Character
  * 
- * 	\brief Character class
+ * \brief Character class
  * 
  * This class is repsonsible for the Characters and Units.
  * 
- * 	\author Bartalis Zoltán, Hercsel Péter, Mogyorósi Martin 
+ * \author Bartalis Zoltán, Hercsel Péter, Mogyorósi Martin 
  * 
- * 	\version 1.0
+ * \version 1.0
  * 
- * 	\date 2020/10/14 18:00
+ * \date 2020/10/14 18:00
  * 
  * 	Created on 2020/10/14 18:00
 */
@@ -36,38 +36,38 @@
 	 * 
 	 * Sets the character's data according to the parameters.
 	 * 
-	 * \param name [in] Name of the character
-	 * \param health [in] Health of the character
-	 * \param damage [in] Damage of the character
-	 * \param attackspeed [in] Attack speed of the character
+	 * \param name Name of the character
+	 * \param health Health of the character
+	 * \param damage Damage of the character
+	 * \param attackspeed Attack speed of the character
 	*/
 		Character(const std::string& name, int health, int damage, const double attackspeed);
 		/**
-		 *  \brief Get Damage of the Character
-		 *  \param none
-		 *  \return the Character's damage
+		 * \brief Get Damage of the Character
+		 * \param none
+		 * \return Character's damage
 		*/
 		int getDamage() const;
 		/**
-		 *  \brief Get Health of the Character
-		 *  \param none
-		 *  \return the Character's Health
+		 * \brief Get Health of the Character
+		 * \param none
+		 * \return Character's Health
 		*/
 		int getHealth() const;
 		/**
-		 *  \brief Get Attack Speed of the Character
-		 *  \param none
-		 *  \return the Character's AttackSpeed
+		 * \brief Get Attack Speed of the Character
+		 * \param none
+		 * \return Character's AttackSpeed
 		*/
 		double getAttackspeed() const;
 		/**
-		 *  \brief Get Name of the Character
-		 *  \param none
-		 *  \return the Character's Name
+		 * \brief Get Name of the Character
+		 * \param none
+		 * \return Character's Name
 		*/
 		const std::string& getName() const;
 		/// This function starts the attack
-		void attack(Character& defender/** [in] Defender unit, target of the attack. */);
+		void attack(Character& defender /** [in] Defender unit, target of the attack. */);
 		/// This function parses the .json files for the Units.
 		static Character parseUnit(const std::string& fname);
 	};
