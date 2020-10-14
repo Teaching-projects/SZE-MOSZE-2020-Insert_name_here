@@ -11,7 +11,7 @@
  * 
  * \date 2020/10/14 18:00
  * 
- * 	Created on 2020/10/14 18:00
+ * Created on 2020/10/14 18:00
 */
 
 #ifndef CHARACTER_HPP
@@ -22,25 +22,25 @@
 	class Character {
 
 	private:
-		const std::string name; /// Name of the character.
-		int health; /// Health of the character.
-		const int damage; /// Damage of the character.
-		const double attackspeed; /// Attack speed of the character.
+		const std::string name; ///< Name of the character.
+		int health; ///< Health of the character.
+		const int damage; ///< Damage of the character.
+		const double attackspeed; ///< Attack speed of the character.
 		friend class Game;
 		/// This function reduces the Health of a character based on the Attacker's damage.
 		void reduceHealthByDamage(const Character& attacker /** [in] Attacker unit. */);
 
 	public:
-	/**
-	 *  Character constructor
-	 * 
-	 * Sets the character's data according to the parameters.
-	 * 
-	 * \param name Name of the character
-	 * \param health Health of the character
-	 * \param damage Damage of the character
-	 * \param attackspeed Attack speed of the character
-	*/
+		/**
+		 *  Character constructor
+		 * 
+		 * Sets the character's data according to the parameters.
+		 * 
+		 * \param name Name of the character
+		 * \param health Health of the character
+		 * \param damage Damage of the character
+		 * \param attackspeed Attack speed of the character
+		*/
 		Character(const std::string& name, int health, int damage, const double attackspeed);
 		/**
 		 * \brief Get Damage of the Character
