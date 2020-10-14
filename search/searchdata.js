@@ -3,8 +3,7 @@ var indexSectionsWithContent =
   0: "acfgps",
   1: "cg",
   2: "acfgp",
-  3: "g",
-  4: "s"
+  3: "s"
 };
 
 var indexSectionNames =
@@ -12,8 +11,7 @@ var indexSectionNames =
   0: "all",
   1: "classes",
   2: "functions",
-  3: "related",
-  4: "pages"
+  3: "pages"
 };
 
 var indexSectionLabels =
@@ -21,7 +19,6 @@ var indexSectionLabels =
   0: "All",
   1: "Classes",
   2: "Functions",
-  3: "Friends",
-  4: "Pages"
+  3: "Pages"
 };
 
