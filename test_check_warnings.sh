@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cppcheck *.cpp --enable=warning = warnings.txt
+cppcheck *.cpp --enable=warning -q --output-file=warnings.txt
 if [ -s ./warnings.txt ]
 then
     echo "Error(s)/warning(s) found."
