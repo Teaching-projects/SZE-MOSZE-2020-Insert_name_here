@@ -26,6 +26,7 @@ TEST(ParserTest, StringRead) {
 
 
 TEST(ParserTest, IsFileExists) {
+    ASSERT_ANY_THROW(Parser::jsonParser("../units/nonExistentFile.json"))<<"No error throw when try to read from file, what does not exist";
     ASSERT_NO_THROW(Parser::jsonParser("../units/unit3.json"))<<"The file does not exist";
 }
 
