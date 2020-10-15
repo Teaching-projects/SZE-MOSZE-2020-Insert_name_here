@@ -12,6 +12,7 @@ int main(int argc, char *argv[]) {
 	G.addCharacter(argv[1]);
 	G.addCharacter(argv[2]);
 	G.fight();
+	
 	}
 	catch (std::string fileError) {
 		std::cout << fileError;
