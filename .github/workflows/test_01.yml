@@ -38,5 +38,10 @@ jobs:
 
       - name: Run test_style_and_performance.sh
         run: ./test_style_and_performance.sh
+      - name: Artifact style_and_performance.txt
+        uses: actions/upload-artifact@v2
+        with:
+          name: artifact(style_and_performance.txt)
+          path: ./style_and_performance.txt
 
         
