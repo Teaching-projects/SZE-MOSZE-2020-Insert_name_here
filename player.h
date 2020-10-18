@@ -12,7 +12,7 @@ private:
 public:
 	Player(const std::string& name, double health, double damage);
 	int getXP();
-	void performAttack(Character& defender);
+	void performAttack(Character& defender) override;
 	static Player parseUnit(const std::string& fname);
 };
 #endif

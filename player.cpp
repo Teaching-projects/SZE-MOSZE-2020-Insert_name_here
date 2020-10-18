@@ -7,8 +7,8 @@ int Player::getXP() { return xp; }
 
 void Player::gainXP(double gainedxp) {
 	xp += gainedxp;
-		while (xp >= 100)
-			this->lvlUp();
+	while (xp >= 100)
+		this->lvlUp();
 };
 
 
