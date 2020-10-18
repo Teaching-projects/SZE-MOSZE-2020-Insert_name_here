@@ -35,7 +35,7 @@ Character Character::parseUnit(const std::string& fname) {
 	bool inside = 0;
 
 	while (getline(file, line)) {
-		for (int i = 0; i < line.size(); i++) {
+		for (unsigned int i = 0; i < line.size(); i++) {
 			if (line[i] == '"') { inside = 1 - inside; i++; }
 			if (inside or isdigit(line[i])) {
 
