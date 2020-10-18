@@ -14,7 +14,6 @@ class Game {
 		void printWhoWins(const Character &attacker, const Character &defender) const;
 		void fight();
 		void addCharacter(const std::string& fname);
-		template<class T1, class T2> void
-			attack(T1& attacker, T2& defender);
+		void attack(Character& attacker, Character& defender);
 };
 #endif

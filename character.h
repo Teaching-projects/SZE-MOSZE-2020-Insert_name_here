@@ -3,7 +3,6 @@
 #include <string>
 
 
-	class Player;
 	class Character {
 
 	protected:
@@ -12,13 +11,12 @@
 		double damage;
 
 	public:
-		Character(const std::string& name, double health, double damage);		
-		void reduceHealthByDamage(Character& attacker);
-		void reduceHealthByDamage(Player& attacker);
+		Character(const std::string& name, double health, double damage);
+		double reduceHealthByDamage(const Character& attacker);
+		virtual void performAttack(Character& defender);	
 		double getDamage() const;
 		double getHealth() const;
 		const std::string& getName() const;
-
 		static Character parseUnit(const std::string& fname);
 	};
 	#endif

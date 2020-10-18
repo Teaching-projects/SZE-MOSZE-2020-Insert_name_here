@@ -7,13 +7,12 @@ class Player : public Character {
 private:
 	double xp=0;
 	int maxhealth = health;
-
+	void gainXP(double damagePoints);
+	void lvlUp();
 public:
 	Player(const std::string& name, double health, double damage);
-	void gainXP();
-	void lvlUp();
-	int getXP() { return xp; }
-
+	int getXP();
+	void performAttack(Character& defender);
 	static Player parseUnit(const std::string& fname);
 };
 #endif
