@@ -12,7 +12,7 @@ void Game::printWhoWins(const Character &attacker, const Character &defender) co
 
 
 void Game::fight() {
-	attack(CH[0],CH[1]);
+	CH[0].attack(CH[1]);
 	Game::printWhoWins(CH[0], CH[1]);
 }
 
@@ -22,11 +22,3 @@ void Game::addCharacter(const std::string& fname) {
 }
 
 
-void Game::attack(Character& attacker, Character& defender) {
-	while (attacker.getHealth() > 0 and defender.getHealth() > 0) {
-
-		attacker.performAttack(defender);
-		if(defender.getHealth()>0)
-			defender.performAttack(attacker);
-	}
-};

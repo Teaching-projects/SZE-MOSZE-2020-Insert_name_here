@@ -2,11 +2,11 @@
 #include <fstream>
 
 
-Character::Character(const std::string& name, double health, double damage) :name(name), health(health), damage(damage) {}
+Character::Character(const std::string& name, double health, double damage, const double attackspeed) : name(name), health(health), damage(damage), attackspeed(attackspeed) {}
 const std::string& Character::getName() const { return  name; }
 double Character::getDamage() const { return damage; }
 double Character::getHealth() const { return health; }
-
+double Character::getAttackspeed() const { return attackspeed; }
 
 double Character::reduceHealthByDamage(const Character& attacker) {
 	double gainedxp;
@@ -31,7 +31,7 @@ Character Character::parseUnit(const std::string& fname) {
 	std::ifstream file;
 	file.open(fname);
 	if (file.fail()) throw "The " + fname + " file does not exist or is not readable.";
-	std::string line, type, name, hp, dmg;
+	std::string line, type, name, hp, dmg, attackspeed;
 	bool inside = 0;
 
 	while (getline(file, line)) {
@@ -42,6 +42,7 @@ Character Character::parseUnit(const std::string& fname) {
 				if (type == "name") name += line[i];
 				else if (type == "hp") hp += line[i];
 				else if (type == "dmg") dmg += line[i];
+				else if (type == "attackspeed") attackspeed += line[i];
 				else type += line[i];
 			}
 		}
@@ -49,5 +50,21 @@ Character Character::parseUnit(const std::string& fname) {
 	}
 
 	file.close();
-	return Character(name, stoi(hp), stoi(dmg));
+	return Character(name, stoi(hp), stod(dmg), stod(attackspeed));
 }
+
+
+
+void Character::attack(Character& defender) {
+	if (this->getAttackspeed() == 0) { defender.performAttack(*this); this->performAttack(defender); };
+	double A_Timer = 0, B_Timer = 0;
+	while (this->getHealth() > 0 and defender.getHealth() > 0) {
+
+
+		if (A_Timer > B_Timer) { this->performAttack(defender); }
+		else defender.performAttack(*this);
+		(A_Timer <= B_Timer) ?
+			(B_Timer -= A_Timer, A_Timer = this->getAttackspeed()) :
+			(A_Timer -= B_Timer, B_Timer = defender.getAttackspeed());
+	}
+};
