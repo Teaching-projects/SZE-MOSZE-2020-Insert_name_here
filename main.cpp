@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
 
 
 	}
-	catch (std::string fileError) {
+	catch (std::string const &fileError) {
 		std::cout << fileError;
 		return 1;
 	}
