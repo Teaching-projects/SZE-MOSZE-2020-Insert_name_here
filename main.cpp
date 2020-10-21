@@ -13,17 +13,17 @@ int main(int argc, char *argv[]) {
 		std::string fname1 = argv[1];
 		std::string fname2 = argv[2];
 
-	Game G;
+	Game G;	
 	if (fname1 == "units/player.json") {
 		Player p1(Player::parseUnit(fname1));
 		Character c1(Character::parseUnit(fname2));
-		G.attack(p1, c1);
+		p1.attack(c1);
 		G.printWhoWins(p1, c1);
 	}
 	else if (fname2 == "units/player.json") {
 		Character c1(Character::parseUnit(fname1));
 		Player p1(Player::parseUnit(fname2));
-		G.attack(c1, p1);
+		c1.attack(p1);
 		G.printWhoWins(p1, c1);
 	}
 	else {

@@ -1,6 +1,6 @@
 *
 
-
+!doxconf
 !.gitignore
 !*.cpp
 !*.h
