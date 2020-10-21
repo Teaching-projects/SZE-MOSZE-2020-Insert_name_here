@@ -35,9 +35,10 @@ std::map <std::string, std::string> Parser::jsonParser(const std::string& fname)
 		{
 			i++;
 			if (type == "") {
-				while (alldata[i] != '"') {
+				while (alldata[i] != '"') {						
+					if( alldata[i]==' ' && !isalpha(alldata[i+1])) throw std::string("Invalid input formating");										
 					type += alldata[i];
-					i++;
+					i++;					
 				}
 			}
 			else {
@@ -56,7 +57,8 @@ std::map <std::string, std::string> Parser::jsonParser(const std::string& fname)
 			}
 			type = "";
 		}
-	}
-
+		
+	}	
+	if(!data.count("name") or !data.count("hp") or !data.count("dmg")) throw std::string("Missing unit data");
 	return data;
 }
