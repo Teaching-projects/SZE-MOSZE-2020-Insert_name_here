@@ -1,6 +1,5 @@
 {
     "name": "Ekhidna",
     "hp": 100,
-    "dmg": 20,
-    "attackspeed": 0.85
+    "dmg": 20
 }

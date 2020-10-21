@@ -1,9 +1,9 @@
-Ekhidna wins. Remaining HP: 20
-Rotfiend wins. Remaining HP: 36
-Ekhidna wins. Remaining HP: 20
-Rotfiend wins. Remaining HP: 40
-Rotfiend wins. Remaining HP: 36
-Rotfiend wins. Remaining HP: 40
+Warg wins. Remaining HP: 20
+Rotfiend wins. Remaining HP: 50
+Ekhidna wins. Remaining HP: 10
+Rotfiend wins. Remaining HP: 50
+Rotfiend wins. Remaining HP: 60
+Rotfiend wins. Remaining HP: 70
 Player wins. Remaining HP: 110
 Player wins. Remaining HP: 110
-Player wins. Remaining HP: 94
+Player wins. Remaining HP: 121

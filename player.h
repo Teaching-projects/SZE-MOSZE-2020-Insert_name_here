@@ -9,10 +9,10 @@ private:
 	int maxhealth = health;
 	void gainXP(double damagePoints);
 	void lvlUp();
-	void performAttack(Character& defender) override;
 public:
-	Player(const std::string& name, double health, double damage, const double attackspeed);
+	Player(const std::string& name, double health, double damage);
 	int getXP();
+	void performAttack(Character& defender) override;
 	static Player parseUnit(const std::string& fname);
 };
 #endif
