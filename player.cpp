@@ -2,7 +2,7 @@
 #include <cmath>
 
 
-Player::Player(const std::string& name, double health, double damage) :Character(name, health, damage) {};
+Player::Player(const std::string& name, double health, double damage, const double attackspeed) :Character(name, health, damage, attackspeed) {};
 int Player::getXP() { return xp; }
 
 void Player::gainXP(double gainedxp) {
@@ -28,5 +28,5 @@ void Player::performAttack(Character& defender) {
 
 Player Player::parseUnit(const std::string& fname) {
 	Character ch = Character::parseUnit(fname);
-	return Player(ch.getName(), ch.getHealth(), ch.getDamage());
+	return Player(ch.getName(), ch.getHealth(), ch.getDamage(), ch.getAttackspeed());
 }
