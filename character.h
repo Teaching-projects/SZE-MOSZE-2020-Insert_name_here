@@ -22,10 +22,10 @@
 	class Character {
 
 	protected:
-		const std::string name; ///< Name of the character.
-		double health; ///< Health of the character.
-		double damage; ///< Damage of the character.
-		const double attackspeed; ///< Attack speed of the character.
+		const std::string name; ///< Name of the Character.
+		double health; ///< Health of the Character.
+		double damage; ///< Damage of the Character.
+		const double attackspeed; ///< Attack speed of the Character.
 		virtual void performAttack(Character& defender);
 
 	public:
@@ -34,13 +34,13 @@
 		 * 
 		 * Sets the character's data according to the parameters.
 		 * 
-		 * \param name Name of the character
-		 * \param health Health of the character
-		 * \param damage Damage of the character
-		 * \param attackspeed Attack speed of the character
+		 * \param name Name of the Character
+		 * \param health Health of the Character
+		 * \param damage Damage of the Character
+		 * \param attackspeed Attack speed of the Character
 		*/
 		Character(const std::string& name, double health, double damage, const double attackspeed);
-		/// This function reduces the Health of a character based on the Attacker's damage.
+		/// This function reduces the Health of a Character based on the Attacker's damage.
 		double reduceHealthByDamage(const Character& attacker /** [in] Attacker unit. */);	
 		/**
 		 * \brief Get Damage of the Character
