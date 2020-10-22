@@ -1,18 +1,14 @@
 #!/bin/bash
+IFS=$'\n'
 
+file='output.txt'
 
-for u1 in units/* 
-do
-	for u2 in units/*
-	do
-		if [ $u1 != $u2 ]
-		then
-			./a.out $u1 $u2 >> output.txt
-		fi
-	done
-done
-DIFF=$(diff  output.txt expected_output.txt)
-if [ "$DIFF" ]
-then	
-		echo "Output is different than expected output."
-fi
+./a.out units/unit1.json units/unit2.json > $file
+./a.out units/unit1.json units/unit3.json >> $file
+./a.out units/unit2.json units/unit1.json >> $file
+./a.out units/unit2.json units/unit3.json >> $file
+./a.out units/unit3.json units/unit1.json >> $file
+./a.out units/unit3.json units/unit2.json >> $file
+./a.out units/player.json units/unit3.json >> $file
+./a.out units/player.json units/unit2.json >> $file
+./a.out units/player.json units/unit1.json >> $file

@@ -9,9 +9,9 @@
  * 
  * \version 1.0
  * 
- * \date 2020/10/14 18:00
+ * \date 2020/10/22 03:00
  * 
- * Created on 2020/10/14 18:00
+ * Created on 2020/10/22 03:00
 */
 
 #ifndef CHARACTER_HPP
@@ -21,14 +21,12 @@
 
 	class Character {
 
-	private:
-		const std::string name; ///< Name of the character.
-		int health; ///< Health of the character.
-		const int damage; ///< Damage of the character.
-		const double attackspeed; ///< Attack speed of the character.
-		friend class Game;
-		/// This function reduces the Health of a character based on the Attacker's damage.
-		void reduceHealthByDamage(const Character& attacker /** [in] Attacker unit. */);
+	protected:
+		const std::string name; ///< Name of the Character.
+		double health; ///< Health of the Character.
+		double damage; ///< Damage of the Character.
+		const double attackspeed; ///< Attack speed of the Character.
+		virtual void performAttack(Character& defender);
 
 	public:
 		/**
@@ -36,24 +34,26 @@
 		 * 
 		 * Sets the character's data according to the parameters.
 		 * 
-		 * \param name Name of the character
-		 * \param health Health of the character
-		 * \param damage Damage of the character
-		 * \param attackspeed Attack speed of the character
+		 * \param name Name of the Character
+		 * \param health Health of the Character
+		 * \param damage Damage of the Character
+		 * \param attackspeed Attack speed of the Character
 		*/
-		Character(const std::string& name, int health, int damage, const double attackspeed);
+		Character(const std::string& name, double health, double damage, const double attackspeed);
+		/// This function reduces the Health of a Character based on the Attacker's damage.
+		double reduceHealthByDamage(const Character& attacker /** [in] Attacker unit. */);	
 		/**
 		 * \brief Get Damage of the Character
 		 * \param none
 		 * \return Character's damage
 		*/
-		int getDamage() const;
+		double getDamage() const;
 		/**
 		 * \brief Get Health of the Character
 		 * \param none
 		 * \return Character's Health
 		*/
-		int getHealth() const;
+		double getHealth() const;
 		/**
 		 * \brief Get Attack Speed of the Character
 		 * \param none
@@ -66,8 +66,8 @@
 		 * \return Character's Name
 		*/
 		const std::string& getName() const;
-		/// This function starts the attack
-		void attack(Character& defender /** [in] Defender unit, target of the attack. */);
+		/// This function performs the attacks between two Characters until one of them dies.
+		void attack(Character& defender/** [in] Defender unit, target of the attack. */);	
 		/// This function parses the .json files for the Units.
 		static Character parseUnit(const std::string& fname);
 	};
