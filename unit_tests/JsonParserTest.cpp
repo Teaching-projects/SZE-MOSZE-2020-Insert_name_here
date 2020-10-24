@@ -12,8 +12,8 @@
 
 TEST(ParserTest, StringRead) {
     std::map<std::string,std::string> M1,M2;
-    M1=Parser::jsonParser("{\"name\":\"Rotfiend\",\"dmg\": 35},\"hp\":110");
-    M2=Parser::jsonParser("{  \"hp\"110,\"dmg\" 35 \"name\":            \"Rotfiend\"}");
+    M1=Parser::StringToMap("{\"name\":\"Rotfiend\",\"dmg\": 35},\"hp\":110");
+    M2=Parser::StringToMap("{  \"hp\"110,\"dmg\" 35 \"name\":            \"Rotfiend\"}");
     
     ASSERT_EQ(M1["name"],"Rotfiend")<<"M1[\"name\"] is incorrect (read from string)";
     ASSERT_EQ(M1["hp"],"110")<<"M1[\"hp\"] is incorrect (read from string)";
@@ -34,7 +34,7 @@ TEST(ParserTest, IsFileExists) {
 TEST(ParserTest, FileRead) {
     std::map<std::string,std::string> M1,M2;
     M1=Parser::jsonParser("../units/unit3.json");
-    M2=Parser::jsonParser("{\"name\":\"Rotfiend\",\"dmg\": 35},\"hp\":110");
+    M2=Parser::StringToMap("{\"name\":\"Rotfiend\",\"dmg\": 35},\"hp\":110");
     
     ASSERT_EQ(M1["name"],"Rotfiend")<<"M1[\"name\"] is incorrect (read from file)";
     ASSERT_EQ(M1["hp"],"110")<<"M1[\"hp\"] is incorrect (read from file)";
@@ -44,7 +44,10 @@ TEST(ParserTest, FileRead) {
     EXPECT_EQ(M1["hp"],M2["hp"])<<"healthpoints are not equal";
     EXPECT_EQ(M1["dmg"],M2["dmg"])<<"damages are not equal";
 }
-
+TEST(ParserTest, CorrectData){
+     ASSERT_ANY_THROW(Parser::StringToMap("{\"name\":\"Rotfiend,\"dmg\": 35},\"hp\":110"))<<"No error throw when missing \" in input";
+     ASSERT_ANY_THROW(Parser::StringToMap("{\"name\":\"Rotfiend\",\"dmg\": 35}"))<<"No error throw when input incomplete";
+}
 
 int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);

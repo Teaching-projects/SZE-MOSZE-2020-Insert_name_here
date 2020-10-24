@@ -17,7 +17,13 @@ void Character::reduceHealthByDamage(const Character &attacker) {
 
 
 Character Character::parseUnit(const std::string& fname) {
-	std::map<std::string, std::string> P = Parser::jsonParser(fname);
+	std::map<std::string, std::string> P;
+	if (fname.find(".json", fname.size() - 5) == -1){
+		P = Parser::StringToMap(fname);
+	}
+	else{
+		P = Parser::jsonParser(fname);
+	} 
 
 	return Character(P["name"], stoi(P["hp"]), stoi(P["dmg"]));
 }
