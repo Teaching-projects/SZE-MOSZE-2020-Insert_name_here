@@ -34,10 +34,10 @@ TEST(ParserTest, IsFileExists) {
 TEST(ParserTest, FileRead) {
     std::map<std::string,std::string> M1,M2;
     M1=Parser::jsonParser("../units/unit3.json");
-    M2=Parser::StringToMap("{\"name\":\"Rotfiend\",\"dmg\": 35},\"hp\":110");
+    M2=Parser::StringToMap("{\"name\":\"Rotfiend\",\"dmg\": 35},\"hp\":100");
     
     ASSERT_EQ(M1["name"],"Rotfiend")<<"M1[\"name\"] is incorrect (read from file)";
-    ASSERT_EQ(M1["hp"],"110")<<"M1[\"hp\"] is incorrect (read from file)";
+    ASSERT_EQ(M1["hp"],"100")<<"M1[\"hp\"] is incorrect (read from file)";
     ASSERT_EQ(M1["dmg"],"35")<<"M1[\"dmg\"] is incorrect (read from file)";
     
     EXPECT_EQ(M1["name"],M2["name"])<<"names are not equal";

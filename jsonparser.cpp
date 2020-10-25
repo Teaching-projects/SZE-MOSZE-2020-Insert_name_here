@@ -45,7 +45,7 @@ std::map <std::string, std::string> Parser::StringToMap(const std::string& allda
 		
 	}
 	
-	if(!data.count("name") or !data.count("hp") or !data.count("dmg")) throw std::string("Missing unit data");
+	if(!data.count("name") or !data.count("hp") or !data.count("dmg") or !data.count("attackspeed")) throw std::string("Missing unit data");
 	return data;
 
 }

@@ -39,7 +39,7 @@ Character Character::parseUnit(const std::string& fname) {
 		P = Parser::jsonParser(fname);
 	} 
 
-	return Character(P["name"], stoi(P["hp"]), stoi(P["dmg"]));
+	return Character(P["name"], stod(P["hp"]), stod(P["dmg"]), stod(P["attackspeed"]));
 }
 
 
