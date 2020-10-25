@@ -12,8 +12,8 @@
 
 TEST(ParserTest, StringRead) {
     std::map<std::string,std::string> M1,M2;
-    M1=Parser::StringToMap("{\"name\":\"Rotfiend\",\"dmg\": 35},\"hp\":110");
-    M2=Parser::StringToMap("{  \"hp\"110,\"dmg\" 35 \"name\":            \"Rotfiend\"}");
+    M1=Parser::StringToMap("{\"name\":\"Rotfiend\",\"dmg\": 35},\"hp\":110,\"attackspeed\": 1.25");
+    M2=Parser::StringToMap("{  \"hp\"110,\"dmg\" 35 \"name\":            \"Rotfiend\",\"attackspeed\": 1.25}");
     
     ASSERT_EQ(M1["name"],"Rotfiend")<<"M1[\"name\"] is incorrect (read from string)";
     ASSERT_EQ(M1["hp"],"110")<<"M1[\"hp\"] is incorrect (read from string)";
@@ -34,7 +34,7 @@ TEST(ParserTest, IsFileExists) {
 TEST(ParserTest, FileRead) {
     std::map<std::string,std::string> M1,M2;
     M1=Parser::jsonParser("../units/unit3.json");
-    M2=Parser::StringToMap("{\"name\":\"Rotfiend\",\"dmg\": 35},\"hp\":100");
+    M2=Parser::StringToMap("{\"name\":\"Rotfiend\",\"dmg\": 35},\"hp\":100,\"attackspeed\": 1.25");
     
     ASSERT_EQ(M1["name"],"Rotfiend")<<"M1[\"name\"] is incorrect (read from file)";
     ASSERT_EQ(M1["hp"],"100")<<"M1[\"hp\"] is incorrect (read from file)";
