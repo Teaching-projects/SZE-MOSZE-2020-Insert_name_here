@@ -1,4 +1,5 @@
 #include "character.h"
+#include "player.h"
 #include "game.h"
 #include <iostream>
 
@@ -12,12 +13,6 @@ int main(int argc, char *argv[]) {
 	G.addCharacter(argv[1]);
 	G.addCharacter(argv[2]);
 	G.fight();
-	
-
-
-
-
-
 	}
 	catch (std::string const &fileError) {
 		std::cout << fileError;
@@ -27,5 +22,8 @@ int main(int argc, char *argv[]) {
 }
 
 	
+
+
+
 
 

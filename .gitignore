@@ -1,16 +1,15 @@
 *
 
-
+!doxconf
 !.gitignore
 !*.cpp
 !*.h
 !*.md
 !*.json
 !*.sh
-!*.txt
 !*.yml
 
-
+!expected_output.txt
 !units
 !.github
 !workflows
