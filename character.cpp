@@ -32,7 +32,7 @@ void Character::performAttack(Character& defender) {
 
 Character Character::parseUnit(const std::string& fname) {
 	std::map<std::string, std::string> P;
-	if (fname.find(".json", fname.size() - 5) == -1){
+	if (fname.find(".json", fname.size() - 5) == -1u){
 		P = Parser::StringToMap(fname);
 	}
 	else{

@@ -14,7 +14,7 @@ std::map <std::string, std::string> Parser::StringToMap(const std::string& allda
 {
 	std::string  type = "";
 	std::map<std::string, std::string> data;
-	for (int i = 0; i < alldata.size(); i++) {
+	for (size_t i = 0; i < alldata.size(); i++) {
 		if (alldata[i] == '"')
 		{
 			i++;
