@@ -1,3 +1,4 @@
+#include "jsonparser.h"
 #include "character.h"
 #include <fstream>
 #include <cmath>
@@ -30,29 +31,15 @@ void Character::performAttack(Character& defender) {
 
 
 Character Character::parseUnit(const std::string& fname) {
-	std::ifstream file;
-	file.open(fname);
-	if (file.fail()) throw "The " + fname + " file does not exist or is not readable.";
-	std::string line, type, name, hp, dmg, attackspeed;
-	bool inside = 0;
-
-	while (getline(file, line)) {
-		for (unsigned int i = 0; i < line.size(); i++) {
-			if (line[i] == '"') { inside = 1 - inside; i++; }
-			if (inside or isdigit(line[i]) or line[i]=='.') {
-
-				if (type == "name") name += line[i];
-				else if (type == "hp") hp += line[i];
-				else if (type == "dmg") dmg += line[i];
-				else if (type == "attackspeed") attackspeed += line[i];
-				else type += line[i];
-			}
-		}
-		type = "";
+	std::map<std::string, std::string> P;
+	if (fname.find(".json", fname.size() - 5) == -1u){
+		P = Parser::StringToMap(fname);
 	}
+	else{
+		P = Parser::jsonParser(fname);
+	} 
 
-	file.close();
-	return Character(name, stoi(hp), stoi(dmg),stod(attackspeed));
+	return Character(P["name"], stod(P["hp"]), stod(P["dmg"]), stod(P["attackspeed"]));
 }
 
 
