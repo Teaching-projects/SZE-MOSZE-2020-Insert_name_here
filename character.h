@@ -7,11 +7,11 @@
  * 
  * \author Bartalis Zoltán, Hercsel Péter, Mogyorósi Martin 
  * 
- * \version 1.0
+ * \version 1.1
  * 
- * \date 2020/10/22 03:00
+ * \date 2020/11/02 19:44
  * 
- * Created on 2020/10/22 03:00
+ * Created on 2020/11/02 19:44
 */
 
 #ifndef CHARACTER_HPP
@@ -26,6 +26,10 @@
 		double health; ///< Health of the Character.
 		double damage; ///< Damage of the Character.
 		const double attackspeed; ///< Attack speed of the Character.
+		/**
+		 *  \brief This function calls the right function with the right parameters for adjusting Health.
+		 *  \param defender Defending unit
+		*/
 		virtual void performAttack(Character& defender);
 
 	public:
