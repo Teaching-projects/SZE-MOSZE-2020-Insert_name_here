@@ -8,13 +8,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build
-        run: g++ -std=c++17 -Wall -Werror *.cpp
+        run: make build
       - name: Make test_01.sh executable
-        run: chmod +x ./test_01.sh      
-      - name: Run test_01.sh
-        run: ./test_01.sh
+        run: make make_.sh_files_executable     
+      - name: Run tests(test_01.sh)
+        run: make run_test_01.sh
       - name: Diff
-        run: diff output.txt expected_output.txt
+        run: make diff_test
         
 
   code_analysis:     
@@ -22,22 +22,20 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Build
-        run: g++ -std=c++17 *.cpp
+        run: make build
       - name: Make *.sh files executable
-        run: chmod +x ./*.sh     
+        run: make make_.sh_files_executable  
 
-      - name: Install valgrind
-        run: sudo apt-get install valgrind
+      - name: Install valgrind and cppcheck
+        run: make install_valgrind_and_cppcheck
       - name: Check Leaks
-        run: valgrind --leak-check=full --error-exitcode=1 --log-file=memory_leaks.txt ./a.out units/unit1.json units/unit2.json
+        run: make check_leaks
 
-      - name: Install cppcheck
-        run: sudo apt-get install cppcheck
-      - name: Run test_check_warnings.sh
-        run: ./test_check_warnings.sh
+      - name: Check warnings(test_check_warnings.sh)
+        run: make check_warnings
 
-      - name: Run test_style_and_performance.sh
-        run: ./test_style_and_performance.sh
+      - name: Style and Performance(test_style_and_performance.sh)
+        run: make style_and_performance
       - name: Artifact style_and_performance.txt
         uses: actions/upload-artifact@v2
         with:
