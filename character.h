@@ -73,6 +73,6 @@
 		/// This function performs the attacks between two Characters until one of them dies.
 		void attack(Character& defender/** [in] Defender unit, target of the attack. */);	
 		/// This function parses the .json files for the Units.
-		static Character parseUnit(const std::string& fname);
+		static Character parseUnit(const std::string& fname/** [in]  File name of Unit .json or string data of the Unit*/);
 	};
 	#endif

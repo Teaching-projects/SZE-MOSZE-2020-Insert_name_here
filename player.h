@@ -51,6 +51,7 @@ public:
 	 * \return Player's XP
 	*/
 	int getXP();
-	static Player parseUnit(const std::string& fname);///< This function parses the .json files for the Player.
+	/// This function parses the .json files for the Player.
+	static Player parseUnit(const std::string& fname/** [in]  File name of Player .json or string data of the Player*/);
 };
 #endif
