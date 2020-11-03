@@ -3,8 +3,8 @@ name: pushdocs.yml
 on:
   push:
     branches:
-      - attackspeed
-      - gh-pages
+      - documentation      
+      - master
 
 jobs:
 
