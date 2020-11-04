@@ -10,9 +10,9 @@ jobs:
       - name: Build
         run: make build
       - name: Make test_01.sh executable
-        run: make make_.sh_files_executable     
-      - name: Run tests(test_01.sh)
-        run: make run_test_01.sh
+        run: chmod +x ./test_01.sh     
+      - name: Run test_01.sh
+        run: ./test_01.sh
       - name: Diff
         run: make diff_test
         
@@ -24,18 +24,20 @@ jobs:
       - name: Build
         run: make build
       - name: Make *.sh files executable
-        run: make make_.sh_files_executable  
+        run: chmod +x ./*.sh     
 
-      - name: Install valgrind and cppcheck
-        run: make install_valgrind_and_cppcheck
+      - name: Install valgrind
+        run: sudo apt-get install valgrind
       - name: Check Leaks
         run: make check_leaks
 
-      - name: Check warnings(test_check_warnings.sh)
-        run: make check_warnings
+      - name: Install cppcheck
+        run: sudo apt-get install cppcheck
+      - name: Run test_check_warnings.sh
+        run: ./test_check_warnings.sh
 
-      - name: Style and Performance(test_style_and_performance.sh)
-        run: make style_and_performance
+      - name: Run test_style_and_performance.sh
+        run: ./test_style_and_performance.sh
       - name: Artifact style_and_performance.txt
         uses: actions/upload-artifact@v2
         with:
