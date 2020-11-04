@@ -25,9 +25,6 @@ jsonparser.o: jsonparser.cpp jsonparser.h
 	$(CC) $(CFLAGS) -c jsonparser.cpp
 
 
-run_test_01.sh:
-	./test_01.sh
-
 diff_test:
 	diff output.txt expected_output.txt
 
@@ -40,8 +37,6 @@ gtest:
 	cd unit_tests && ./runTests
 
 documentation:
-	sudo apt-get install doxygen
-	sudo apt-get install graphviz
 	doxygen doxconf
 
 clean:
