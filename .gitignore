@@ -1,5 +1,6 @@
 *
-
+!unit_tests
+!Makefile
 !doxconf
 !.gitignore
 !*.cpp
@@ -8,6 +9,7 @@
 !*.json
 !*.sh
 !*.yml
+!*.txt
 
 !expected_output.txt
 !units

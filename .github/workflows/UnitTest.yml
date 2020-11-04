@@ -6,12 +6,8 @@ jobs:
   build_and_test:
     runs-on: ubuntu-latest
     steps:
-      - name: Install gtest
-        run: sudo apt install libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make && sudo cp *.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
       - uses: actions/checkout@v2
-      - name: cmake CMakeLists.txt 
-        run: cd unit_tests && cmake CMakeLists.txt 
-      - name: make
-        run: cd unit_tests && make
-      - name: Run Google Test
-        run: cd unit_tests && ./runTests
+      - name: Install gtest
+        run: 	sudo apt install libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make && sudo cp *.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
+      - name: Google Test
+        run: make gtest
