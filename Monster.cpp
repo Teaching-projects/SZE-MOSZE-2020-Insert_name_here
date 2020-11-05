@@ -32,7 +32,7 @@ void Monster::performAttack(Monster& defender) {
 
 Monster Monster::parse(const std::string& fname) {
 	JSON P;
-	if (fname.substr(fname.size()-5,5)==".json"){
+	if (fname.substr(fname.size()-5,5)!=".json"){
 		P = JSON::StringToMap(fname);
 	}
 	else{
