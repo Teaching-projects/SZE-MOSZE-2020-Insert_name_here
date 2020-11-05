@@ -2,7 +2,6 @@
 #include "Monster.h"
 #include <fstream>
 #include <cmath>
-#include <iostream>
 
 
 
@@ -59,5 +58,4 @@ void Monster::fightTilDeath(Monster& defender) {
 			(A_Timer -= B_Timer, B_Timer = rounding*defender.getAttackCoolDown()):
 			(B_Timer -= A_Timer, A_Timer = rounding*this->getAttackCoolDown());
 	}
-	std::cout<<A_Timer<<"   "<<B_Timer;
 };
