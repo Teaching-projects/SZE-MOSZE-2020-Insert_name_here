@@ -1,5 +1,5 @@
-#include "jsonparser.h"
-#include "character.h"
+#include "JSON.h"
+#include "Monster.h"
 #include <fstream>
 #include <cmath>
 
