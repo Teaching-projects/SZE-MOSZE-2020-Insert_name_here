@@ -2,17 +2,18 @@
 #include "Monster.h"
 #include <fstream>
 #include <cmath>
+#include <iostream>
 
 
 
-Monster::Monster(const std::string& name, int health, double damage, const double attackspeed) : name(name), health(health), damage(damage), attackspeed(attackspeed) {}
+Monster::Monster(const std::string& name, int health, int damage, const float attackspeed) : name(name), health(health), damage(damage), attackspeed(attackspeed) {}
 const std::string& Monster::getName() const { return  name; }
-double Monster::getDamage() const { return damage; }
+float Monster::getDamage() const { return damage; }
 int Monster::getHealthPoints() const { return health; }
-double Monster::getAttackCoolDown() const { return attackspeed; }
+float Monster::getAttackCoolDown() const { return attackspeed; }
 
-double Monster::reduceHealthByDamage(const Monster& attacker) {
-	double gainedxp;
+float Monster::reduceHealthByDamage(const Monster& attacker) {
+	float gainedxp;
 	if (health - attacker.getDamage() >= 0) {
 		gainedxp = attacker.getDamage();
 		health -= attacker.getDamage();
@@ -42,20 +43,21 @@ Monster Monster::parse(const std::string& fname) {
     P.get<std::string>("name"),
     P.get<int>("health_points"),
     P.get<int>("damage"),
-    P.get<double>("attack_cooldown")
+    P.get<float>("attack_cooldown")
   );
 }
 
 
 void Monster::fightTilDeath(Monster& defender) {
-	if (this->getAttackCoolDown() == 0) { this->performAttack(defender); defender.performAttack(*this); };
-	int A_Timer = 0, B_Timer = 0, rounding=1000000;
+	int rounding=10, A_Timer = this->getAttackCoolDown()*rounding, B_Timer = defender.getAttackCoolDown()*rounding;
+	this->performAttack(defender);if(defender.getHealthPoints()>0)defender.performAttack(*this);
 	while (defender.getHealthPoints() > 0 && this->getHealthPoints() > 0) {
 
 		if (A_Timer > B_Timer) defender.performAttack(*this);
 		else this->performAttack(defender);
 		(A_Timer > B_Timer) ?
-			(A_Timer -= rounding* B_Timer, B_Timer = rounding* defender.getAttackCoolDown()):
-			(B_Timer -= rounding* A_Timer, A_Timer = rounding* this->getAttackCoolDown());
+			(A_Timer -= B_Timer, B_Timer = rounding*defender.getAttackCoolDown()):
+			(B_Timer -= A_Timer, A_Timer = rounding*this->getAttackCoolDown());
 	}
+	std::cout<<A_Timer<<"   "<<B_Timer;
 };

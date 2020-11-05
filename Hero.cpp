@@ -3,8 +3,8 @@
 #include <cmath>
 
 
-Hero::Hero(const std::string& name, int health, double damage, double attackspeed, const int experience_per_level, const int health_point_bonus_per_level,
-			const double damage_bonus_per_level, const double cooldown_multiplier_per_level):
+Hero::Hero(const std::string& name, int health, int damage, float attackspeed, const int experience_per_level, const int health_point_bonus_per_level,
+			const int damage_bonus_per_level, const float cooldown_multiplier_per_level):
 					Monster(name, health, damage, attackspeed),
 					experience_per_level(experience_per_level), 			
 					health_point_bonus_per_level(health_point_bonus_per_level),
@@ -13,7 +13,7 @@ Hero::Hero(const std::string& name, int health, double damage, double attackspee
 
 
 int Hero::getXP() { return xp; }
-void Hero::gainXP(double gainedxp) {
+void Hero::gainXP(float gainedxp) {
 	xp += gainedxp;
 	while (xp >= experience_per_level)
 		this->lvlUp();
@@ -42,10 +42,10 @@ Hero Hero::parse(const std::string& fname) {
     file.get<std::string>("name"),
     file.get<int>("base_health_points"),
     file.get<int>("base_damage"),
-    file.get<double>("base_attack_cooldown"),
+    file.get<float>("base_attack_cooldown"),
     file.get<int>("experience_per_level"),
     file.get<int>("health_point_bonus_per_level"),
     file.get<int>("damage_bonus_per_level"),
-    file.get<double>("cooldown_multiplier_per_level")
+    file.get<float>("cooldown_multiplier_per_level")
   );
 }

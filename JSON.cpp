@@ -15,7 +15,7 @@ JSON JSON::StringToMap(const std::string& alldata)
 	int k;
 	std::string  type = "";
 	JSON data;
-	bool isdouble=false;
+	bool isfloat=false;
 	for (size_t i = 0; i < alldata.size(); i++) {
 		if (alldata[i] == '"')
 		{
@@ -40,12 +40,12 @@ JSON JSON::StringToMap(const std::string& alldata)
 		if (isdigit(alldata[i])) {
 			k=i;
 			while (isdigit(alldata[i]) || alldata[i] == '.') {
-				if(alldata[i] == '.') isdouble=true;
+				if(alldata[i] == '.') isfloat=true;
 				i++;
 				
 			}
-			(!isdouble) ? data.intMap[type] = stoi(alldata.substr(k,i-k)) : data.doubleMap[type] = stod(alldata.substr(k,i-k));
-			isdouble=false;
+			(!isfloat) ? data.intMap[type] = stoi(alldata.substr(k,i-k)) : data.floatMap[type] = stod(alldata.substr(k,i-k));
+			isfloat=false;
 			type = "";
 		}
 		
@@ -79,8 +79,8 @@ std::string JSON::get<std::string>(const std::string& key) const {
 }
 
 template<>
-double JSON::get<double>(const std::string& key) const {
-	return doubleMap.at(key);
+float JSON::get<float>(const std::string& key) const {
+	return floatMap.at(key);
 }
 
 template<>

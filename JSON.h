@@ -20,7 +20,7 @@
 
 class JSON{
 std::map<std::string, std::string> stringMap;
-    std::map<std::string, double> doubleMap;         
+    std::map<std::string, float> floatMap;         
     std::map<std::string, int> intMap;
 
 public:

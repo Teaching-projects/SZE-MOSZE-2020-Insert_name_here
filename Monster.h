@@ -24,8 +24,8 @@
 	protected:
 		const std::string name; ///< Name of the Monster.
 		int health; ///< Health of the Monster.
-		double damage; ///< Damage of the Monster.
-		double attackspeed; ///< Attack speed of the Monster.
+		float damage; ///< Damage of the Monster.
+		float attackspeed; ///< Attack speed of the Monster.
 		/**
 		 *  \brief This function calls the right function with the right parameters for adjusting Health.
 		 *  \param defender Defending unit
@@ -44,15 +44,15 @@
 		 * \param damage Damage of the Monster
 		 * \param attackspeed Attack speed of the Monster
 		*/
-		Monster(const std::string& name, int health, double damage, const double attackspeed);
+		Monster(const std::string& name, int health, int damage, const float attackspeed);
 		/// This function reduces the Health of a Monster based on the Attacker's damage.
-		double reduceHealthByDamage(const Monster& attacker /** [in] Attacker unit. */);	
+		float reduceHealthByDamage(const Monster& attacker /** [in] Attacker unit. */);	
 		/**
 		 * \brief Get Damage of the Monster
 		 * \param none
 		 * \return Monster's damage
 		*/
-		double getDamage() const;
+		float getDamage() const;
 		/**
 		 * \brief Get Health of the Monster
 		 * \param none
@@ -64,7 +64,7 @@
 		 * \param none
 		 * \return Monster's AttackSpeed
 		*/
-		double getAttackCoolDown() const;
+		float getAttackCoolDown() const;
 		/**
 		 * \brief Get Name of the Monster
 		 * \param none
