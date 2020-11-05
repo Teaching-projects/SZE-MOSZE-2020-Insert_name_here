@@ -1,7 +1,7 @@
 
 OBJS = main.o Monster.o Hero.o JSON.o
-CFLAGS = -std=c++17 -Wall -Werror
-CC = g++
+CFLAGS = -std=c++17 -Wall -Werror -g
+CC = g++-10
 OUT = a.out
 VLGRNDFLAGS:= --leak-check=full --error-exitcode=1 --log-file=memory_leaks.txt
 JSONFILES:=  units/scenario1.json
