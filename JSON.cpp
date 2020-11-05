@@ -10,7 +10,7 @@ JSON JSON::jsonParser(std::istream& file) {
 
 
  
-JSON JSON::StringToMap(const std::string& alldata)
+JSON JSON::StringToJSON(const std::string& alldata)
 {
 	int k;
 	std::string  type = "";
@@ -70,7 +70,7 @@ JSON JSON::parseFromFile(const std::string& fname) {
 	}
 	file.close();
 	
-	return StringToMap(alldata);
+	return StringToJSON(alldata);
 }
 
 template<>

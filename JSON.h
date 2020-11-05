@@ -44,7 +44,7 @@ public:
      *  \param alldata string with unit/caharcter information
      *  \return Map with unit/character information
     */
-    static JSON StringToMap(const std::string& alldata);    
+    static JSON StringToJSON(const std::string& alldata);    
 
 
     class ParseException : public std::exception {
