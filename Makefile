@@ -1,28 +1,25 @@
 
-OBJS = main.o game.o character.o player.o jsonparser.o
+OBJS = main.o Monster.o Hero.o JSON.o
 CFLAGS = -std=c++17 -Wall -Werror
 CC = g++
 OUT = a.out
 VLGRNDFLAGS:= --leak-check=full --error-exitcode=1 --log-file=memory_leaks.txt
-JSONFILES:=  units/unit1.json units/unit2.json
+JSONFILES:=  units/scenario1.json
 
 build: $(OBJS)
 	$(CC) $(CFLAGS) -o $(OUT) $(OBJS)
 
-main.o: main.cpp game.h player.h character.h
+main.o: main.cpp Hero.h Monster.h JSON.h
 	$(CC) $(CFLAGS) -c main.cpp
 
-game.o: game.cpp game.h character.h player.h
-	$(CC) $(CFLAGS) -c game.cpp
+Monster.o: Monster.cpp Monster.h JSON.h
+	$(CC) $(CFLAGS) -c Monster.cpp
 
-character.o: character.cpp character.h jsonparser.h
-	$(CC) $(CFLAGS) -c character.cpp
+Hero.o: Hero.cpp Hero.h JSON.h Monster.h
+	$(CC) $(CFLAGS) -c Hero.cpp
 
-player.o: player.cpp player.h jsonparser.h character.h
-	$(CC) $(CFLAGS) -c player.cpp
-
-jsonparser.o: jsonparser.cpp jsonparser.h
-	$(CC) $(CFLAGS) -c jsonparser.cpp
+JSON.o: JSON.cpp JSON.h
+	$(CC) $(CFLAGS) -c JSON.cpp
 
 
 diff_test:
