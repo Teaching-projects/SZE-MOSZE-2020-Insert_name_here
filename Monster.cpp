@@ -5,11 +5,11 @@
 
 
 
-Monster::Monster(const std::string& name, double health, double damage, const double attackspeed) : name(name), health(health), damage(damage), attackspeed(attackspeed) {}
+Monster::Monster(const std::string& name, int health, double damage, const double attackspeed) : name(name), health(health), damage(damage), attackspeed(attackspeed) {}
 const std::string& Monster::getName() const { return  name; }
 double Monster::getDamage() const { return damage; }
-double Monster::getHealth() const { return health; }
-double Monster::getAttackspeed() const { return attackspeed; }
+int Monster::getHealthPoints() const { return health; }
+double Monster::getAttackCoolDown() const { return attackspeed; }
 
 double Monster::reduceHealthByDamage(const Monster& attacker) {
 	double gainedxp;
@@ -30,28 +30,32 @@ void Monster::performAttack(Monster& defender) {
 }
 
 
-Monster Monster::parseUnit(const std::string& fname) {
-	std::map<std::string, std::string> P;
-	if (fname.find(".json", fname.size() - 5) == -1u){
-		P = Parser::StringToMap(fname);
+Monster Monster::parse(const std::string& fname) {
+	JSON P;
+	if (fname.find(".json", fname.size() - 5) == -1){
+		P = JSON::StringToMap(fname);
 	}
 	else{
-		P = Parser::jsonParser(fname);
+		P = JSON::parseFromFile(fname);
 	} 
-
-	return Monster(P["name"], stod(P["hp"]), stod(P["dmg"]), stod(P["attackspeed"]));
+  	return Monster(
+    P.get<std::string>("name"),
+    P.get<int>("health_points"),
+    P.get<int>("damage"),
+    P.get<double>("attack_cooldown")
+  );
 }
 
 
-void Monster::attack(Monster& defender) {
-	if (this->getAttackspeed() == 0) { this->performAttack(defender); defender.performAttack(*this); };
-	double A_Timer = 0, B_Timer = 0;
-	while (defender.getHealth() > 0 and this->getHealth() > 0) {
+void Monster::fightTilDeath(Monster& defender) {
+	if (this->getAttackCoolDown() == 0) { this->performAttack(defender); defender.performAttack(*this); };
+	int A_Timer = 0, B_Timer = 0, rounding=1000000;
+	while (defender.getHealthPoints() > 0 && this->getHealthPoints() > 0) {
 
 		if (A_Timer > B_Timer) defender.performAttack(*this);
 		else this->performAttack(defender);
 		(A_Timer > B_Timer) ?
-			(A_Timer -= B_Timer, B_Timer = defender.getAttackspeed(), A_Timer = round(A_Timer*1000000)/1000000):
-			(B_Timer -= A_Timer, A_Timer = this->getAttackspeed(), B_Timer = round(B_Timer*1000000)/1000000);
+			(A_Timer -= rounding* B_Timer, B_Timer = rounding* defender.getAttackCoolDown()):
+			(B_Timer -= rounding* A_Timer, A_Timer = rounding* this->getAttackCoolDown());
 	}
 };

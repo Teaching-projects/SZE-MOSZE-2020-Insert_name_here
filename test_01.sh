@@ -1,15 +1,9 @@
 #!/bin/bash
 IFS=$'\n'
 
-file='output.txt'
+file1='output1.txt'
+file2='output2.txt'
 
 
-./a.out units/unit1.json units/unit2.json > $file
-./a.out units/unit1.json units/unit3.json >> $file
-./a.out units/unit2.json units/unit1.json >> $file
-./a.out units/unit2.json units/unit3.json >> $file
-./a.out units/unit3.json units/unit1.json >> $file
-./a.out units/unit3.json units/unit2.json >> $file
-./a.out units/player.json units/unit3.json >> $file
-./a.out units/player.json units/unit2.json >> $file
-./a.out units/player.json units/unit1.json >> $file
+./a.out units/scenario1.json > $file1
+./a.out units/scenario2.json > $file2

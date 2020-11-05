@@ -23,9 +23,9 @@
 
 	protected:
 		const std::string name; ///< Name of the Monster.
-		double health; ///< Health of the Monster.
+		int health; ///< Health of the Monster.
 		double damage; ///< Damage of the Monster.
-		const double attackspeed; ///< Attack speed of the Monster.
+		double attackspeed; ///< Attack speed of the Monster.
 		/**
 		 *  \brief This function calls the right function with the right parameters for adjusting Health.
 		 *  \param defender Defending unit
@@ -33,6 +33,7 @@
 		virtual void performAttack(Monster& defender);
 
 	public:
+		bool isAlive() {return health;}
 		/**
 		 *  Monster constructor
 		 * 
@@ -43,7 +44,7 @@
 		 * \param damage Damage of the Monster
 		 * \param attackspeed Attack speed of the Monster
 		*/
-		Monster(const std::string& name, double health, double damage, const double attackspeed);
+		Monster(const std::string& name, int health, double damage, const double attackspeed);
 		/// This function reduces the Health of a Monster based on the Attacker's damage.
 		double reduceHealthByDamage(const Monster& attacker /** [in] Attacker unit. */);	
 		/**
@@ -57,13 +58,13 @@
 		 * \param none
 		 * \return Monster's Health
 		*/
-		double getHealth() const;
+		int getHealthPoints() const;
 		/**
 		 * \brief Get Attack Speed of the Monster
 		 * \param none
 		 * \return Monster's AttackSpeed
 		*/
-		double getAttackspeed() const;
+		double getAttackCoolDown() const;
 		/**
 		 * \brief Get Name of the Monster
 		 * \param none
@@ -71,8 +72,8 @@
 		*/
 		const std::string& getName() const;
 		/// This function performs the attacks between two Monsters until one of them dies.
-		void attack(Monster& defender/** [in] Defender unit, target of the attack. */);	
+		void fightTilDeath(Monster& defender/** [in] Defender unit, target of the attack. */);	
 		/// This function parses the .json files for the Units.
-		static Monster parseUnit(const std::string& fname/** [in]  File name of Unit .json or string data of the Unit*/);
+		static Monster parse(const std::string& fname/** [in]  File name of Unit .json or string data of the Unit*/);
 	};
 	#endif
