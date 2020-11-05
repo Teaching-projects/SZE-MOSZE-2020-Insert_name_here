@@ -5,13 +5,13 @@
 
 
 
-Character::Character(const std::string& name, double health, double damage, const double attackspeed) : name(name), health(health), damage(damage), attackspeed(attackspeed) {}
-const std::string& Character::getName() const { return  name; }
-double Character::getDamage() const { return damage; }
-double Character::getHealth() const { return health; }
-double Character::getAttackspeed() const { return attackspeed; }
+Monster::Monster(const std::string& name, double health, double damage, const double attackspeed) : name(name), health(health), damage(damage), attackspeed(attackspeed) {}
+const std::string& Monster::getName() const { return  name; }
+double Monster::getDamage() const { return damage; }
+double Monster::getHealth() const { return health; }
+double Monster::getAttackspeed() const { return attackspeed; }
 
-double Character::reduceHealthByDamage(const Character& attacker) {
+double Monster::reduceHealthByDamage(const Monster& attacker) {
 	double gainedxp;
 	if (health - attacker.getDamage() >= 0) {
 		gainedxp = attacker.getDamage();
@@ -25,12 +25,12 @@ double Character::reduceHealthByDamage(const Character& attacker) {
 }
 
 
-void Character::performAttack(Character& defender) {
+void Monster::performAttack(Monster& defender) {
 	defender.reduceHealthByDamage(*this);
 }
 
 
-Character Character::parseUnit(const std::string& fname) {
+Monster Monster::parseUnit(const std::string& fname) {
 	std::map<std::string, std::string> P;
 	if (fname.find(".json", fname.size() - 5) == -1u){
 		P = Parser::StringToMap(fname);
@@ -39,11 +39,11 @@ Character Character::parseUnit(const std::string& fname) {
 		P = Parser::jsonParser(fname);
 	} 
 
-	return Character(P["name"], stod(P["hp"]), stod(P["dmg"]), stod(P["attackspeed"]));
+	return Monster(P["name"], stod(P["hp"]), stod(P["dmg"]), stod(P["attackspeed"]));
 }
 
 
-void Character::attack(Character& defender) {
+void Monster::attack(Monster& defender) {
 	if (this->getAttackspeed() == 0) { this->performAttack(defender); defender.performAttack(*this); };
 	double A_Timer = 0, B_Timer = 0;
 	while (defender.getHealth() > 0 and this->getHealth() > 0) {
