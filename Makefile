@@ -26,7 +26,8 @@ jsonparser.o: jsonparser.cpp jsonparser.h
 
 
 diff_test:
-	diff output.txt expected_output.txt
+	diff output1.txt real_output1.txt
+	diff output2.txt real_output2.txt
 
 check_leaks:
 	valgrind $(VLGRNDFLAGS) ./$(OUT) $(JSONFILES)
