@@ -116,20 +116,20 @@ TEST(GameTest, ParseHero){
 }
 
 
-/*
+
 TEST(GameTest, XP){
-    Hero p1(Hero::parse("../units/Zombie.json"));
+    Hero p1 = Hero::parse("../units/Dark_Wanderer.json");
     Monster c1(Monster::parse("../units/Zombie.json"));
     p1.fightTilDeath(c1);
     ASSERT_EQ(p1.getXP(),10);
-}*/
-/*
+}
+
 TEST(GameTest, ENEMYHP){
-    Hero p1{Hero::parse("units/Fallen.json")};
-    Monster c1{Monster::parse("units/Fallen.json")};
+    Hero p1{Hero::parse("../units/Dark_Wanderer.json")};
+    Monster c1{Monster::parse("../units/Fallen.json")};
     p1.fightTilDeath(c1);
     ASSERT_EQ(c1.getHealthPoints(),0);
-}*/
+}
 int main(int argc, char **argv){
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
