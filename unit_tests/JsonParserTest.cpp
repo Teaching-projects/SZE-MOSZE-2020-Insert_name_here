@@ -7,7 +7,7 @@
 #include <string>
 #include <map>
 #include <gtest/gtest.h>
-
+#include <iostream>
 
 
 TEST(ParserTest, StringRead) {
@@ -71,49 +71,49 @@ TEST(ParserTest, FileRead) {
     JSON M1,M2;
     M1=JSON::parseFromFile("../units/Zombie.json");
     M2=JSON::StringToJSON("{\"name\":\"Rotfiend\",\"damage\": 1},\"health_points\":10,\"attack_cooldown\": 2.8");
-    
+
     ASSERT_EQ(M1.get<std::string>("name"),"Zombie")<<"M1[\"name\"] is incorrect (read from file)";
     ASSERT_EQ(M1.get<int>("health_points"),10)<<"M1[\"health_points\"] is incorrect (read from file)";
     ASSERT_EQ(M1.get<int>("damage"), 1)<<"M1[\"damage\"] is incorrect (read from file)";
     
-   // EXPECT_EQ(M1.get<std::string>("damage"),M2.get<std::string>("damage"))<<"names are not equal";
+    EXPECT_EQ(M1.get<int>("damage"),M2.get<int>("damage"))<<"names are not equal";
     EXPECT_EQ(M1.get<int>("health_points"),M2.get<int>("health_points"))<<"healthpoints are not equal";
     EXPECT_EQ(M1.get<int>("damage"),M2.get<int>("damage"))<<"damages are not equal";
 }
 TEST(ParserTest, Missing_Key){
      
-   //  ASSERT_ANY_THROW(JSON::StringToJSON("{\"name\":\"Rotfiend\",\"damage\": 35}"))<<"No error throw when input incomplete";
-   //  ASSERT_ANY_THROW(JSON::StringToJSON("{\"name\":\"Rotfiend\""))<<"No error throw when input incomplete";
+     ASSERT_NO_THROW(JSON::StringToJSON("{\"name\":\"Rotfiend\",\"damage\": 35},\"health_points\":100,\"attack_cooldown\": 1.25");)<<"Error throw when input incomplete";
+     ASSERT_NO_THROW(JSON::StringToJSON("{\"name\":\"Rotfiend\",\"damage\": 1},\"health_points\":10,\"attack_cooldown\": 2.8"))<<"No error throw when input incomplete";
 
 
 
 }
-//TEST(ParserTest, missingquotemarks){
-//    ASSERT_ANY_THROW(JSON::StringToJSON("{\"name\":\"Rotfiend\", \"dmg: 35 , \"hp\": 110"))<<"No error throw when missing \" in input";
-   
-//}
-/*
-TEST(ParserTest, ParseUnit){   
-    JSON unit1;
-    unit1=JSON::StringToJSON("{\"name\":\"Rotfiend\",\"damage\": 35},\"health_points\":100,\"attack_cooldown\": 1.25");    
-    Monster C1 (JSON::parseFromFile("../units/unit3.json"));
-    ASSERT_EQ(stod(unit1["health_points"]),C1.getHealth());       
+
+
+TEST(ParserTest, ParseMonster){   
+    JSON M1;
+    M1=JSON::StringToJSON("{\"name\":\"Rotfiend\",\"damage\": 35},\"health_points\":100,\"attack_cooldown\": 1.25");  
+    Monster M2=Monster::parse("{\"name\":\"Rotfiend\",\"damage\": 35},\"health_points\":100,\"attack_cooldown\": 1.25");
+    EXPECT_EQ(M1.get<std::string>("name"),M2.getName())<<"names are not equal";
+    EXPECT_EQ(M1.get<int>("health_points"),M2.getHealthPoints())<<"healthpoints are not equal";
+    EXPECT_EQ(M1.get<int>("damage"),M2.getDamage())<<"damages are not equal";       
 }
-*/
-/*
-TEST(GameTest, Attack){
-    Hero p1 {Hero::parse("../units/Zombie.json")};
-    Monster c1{Monster::parse("../units/Zombie.json")};
+
+TEST(ScenarioTest, Scenario){
+    JSON scenario = JSON::parseFromFile("../units/scenario2.json");
+    std::string hero_file, monster_file;
+    hero_file=scenario.get<std::string>("hero");
+    monster_file=scenario.get<std::string>("monsters");
+    ASSERT_EQ(hero_file, "units/Dark_Wanderer.json"); 
+    ASSERT_EQ(monster_file, " units/Blood_Raven.json ");
+}
+
+TEST(GameTest, ParseHero){
+    Monster c1=Monster::parse("../units/Zombie.json");
+    Hero p1=Hero::parse("../units/Dark_Wanderer.json");
     p1.fightTilDeath(c1);
-    ASSERT_EQ(p1.getHealthPoints(), p1.getHealthPoints()); 
-}*/
-/*
-TEST(GameTest, Levelup){
-    Hero p1{Hero::parse("../units/Fallen.json")};
-    Monster c1{Monster::parse("../units/Zombie.json")};
-    p1.fightTilDeath(c1);
-    ASSERT_FLOAT_EQ(p1.getDamage(),2);
-}*/
+    ASSERT_FLOAT_EQ(p1.getDamage(),3);
+}
 
 
 /*
