@@ -24,25 +24,34 @@ std::map<std::string, std::string> stringMap;
     std::map<std::string, int> intMap;
 
 public:
-      
-	JSON(std::map<std::string, std::string> _map) : stringMap(_map) {}
+    /**
+     *  JSON constructor
+     * 
+     * Sets the JSON's data according to the parameters.
+     * 
+     * \param param_map
+    */
+  	JSON(std::map<std::string, std::string> param_map) : stringMap(param_map) {}
+    /**
+     *  JSON constructor
+    */
     JSON(){};
     /**
      *  \brief Parsing from istream
      *  \param file istream with unit/character information
-     *  \return Map with unit/character information
+     *  \return JSON with unit/character information
     */
     static JSON jsonParser(std::istream& file);
     /**
      *  \brief Parsing from Json file
      *  \param fname Filename of the Json file
-     *  \return Map with unit/character information
+     *  \return JSON with unit/character information
     */
     static JSON parseFromFile(const std::string& fname);
     /**
      *  \brief Parsing from a string
      *  \param alldata string with unit/caharcter information
-     *  \return Map with unit/character information
+     *  \return JSON with unit/character information
     */
     static JSON StringToJSON(const std::string& alldata);    
 
