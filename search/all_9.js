@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['reducehealthbydamage',['reduceHealthByDamage',['../classCharacter.html#ae1ef8e6022e682581072a6d8edd27cd6',1,'Character']]]
+  ['reducehealthbydamage',['reduceHealthByDamage',['../classMonster.html#a8572fdebafa0cb0992cc2298ff810e6f',1,'Monster']]]
 ];

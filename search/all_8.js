@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['parser',['Parser',['../classParser.html',1,'']]],
-  ['parseunit',['parseUnit',['../classCharacter.html#aa54bb18ed07d0a3ec7ca5cbc271d43b8',1,'Character::parseUnit()'],['../classPlayer.html#a04102f51ca99170706ad8c9b46f43175',1,'Player::parseUnit()']]],
-  ['performattack',['performAttack',['../classCharacter.html#a1d249073dfde92cb8b9e25a23f124807',1,'Character']]],
-  ['player',['Player',['../classPlayer.html',1,'Player'],['../classPlayer.html#aeef4be4fd53fe2e7c69150f8981fe09b',1,'Player::Player()']]],
-  ['printwhowins',['printWhoWins',['../classGame.html#afe04d198f1807191234739a6a056a2ba',1,'Game']]]
+  ['parse',['parse',['../classHero.html#a77142e32749e388c38c214e0d87c7ebf',1,'Hero::parse()'],['../classMonster.html#af198de6146283046765fb0a9d6d05d93',1,'Monster::parse()']]],
+  ['parseexception',['ParseException',['../classJSON_1_1ParseException.html',1,'JSON']]],
+  ['parsefromfile',['parseFromFile',['../classJSON.html#a1e09fa8b6a9931ffd9061d9e3bdb4b3d',1,'JSON']]],
+  ['performattack',['performAttack',['../classMonster.html#a07bc0f8bcf5884e61caa4ebf2add1390',1,'Monster']]]
 ];

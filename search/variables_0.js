@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['attackspeed',['attackspeed',['../classCharacter.html#ad58189600c1119a993862e82f63b897c',1,'Character']]]
+  ['attackspeed',['attackspeed',['../classMonster.html#a8c50872f5a0bc638a8d90bba3b90dcf3',1,'Monster']]]
 ];

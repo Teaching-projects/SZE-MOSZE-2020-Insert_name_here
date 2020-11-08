@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['getattackspeed',['getAttackspeed',['../classCharacter.html#a0405fa66f7ac4e1a6a7faf1bffe2c5c7',1,'Character']]],
-  ['getdamage',['getDamage',['../classCharacter.html#a1aef3e7838e61127067918b50d8e324d',1,'Character']]],
-  ['gethealth',['getHealth',['../classCharacter.html#aaa16f6780b6c0487f36bc88e2232eca5',1,'Character']]],
-  ['getname',['getName',['../classCharacter.html#a631dd8d1785ff701f0fc51615bb017b2',1,'Character']]],
-  ['getxp',['getXP',['../classPlayer.html#a158fa98674e30ce78644f50a35d8a61c',1,'Player']]]
+  ['json',['JSON',['../classJSON.html#a75bfa4d3818ac8d06490a91346d31973',1,'JSON::JSON(std::map&lt; std::string, std::string &gt; param_map)'],['../classJSON.html#acf359a0f5efc57e6e844ad58abbd6480',1,'JSON::JSON()']]],
+  ['jsonparser',['jsonParser',['../classJSON.html#ad63d7dd42b1b6725b17669f487f362e4',1,'JSON']]]
 ];

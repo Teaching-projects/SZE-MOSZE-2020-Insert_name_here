@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stringtomap',['StringToMap',['../classParser.html#a869305af930db627f0c4da020209b4fa',1,'Parser']]]
+  ['stringtojson',['StringToJSON',['../classJSON.html#a8ca6a250f3900127849fb19f30d06902',1,'JSON']]]
 ];
