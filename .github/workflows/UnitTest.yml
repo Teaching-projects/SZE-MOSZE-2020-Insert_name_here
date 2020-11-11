@@ -5,9 +5,8 @@ on: push
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
+    container: bartaliszoltan/mosze:latest
     steps:
       - uses: actions/checkout@v2
-      - name: Install gtest
-        run: 	sudo apt install libgtest-dev && cd /usr/src/gtest && sudo cmake . && sudo make && sudo cp *.a /usr/lib && sudo ln -s /usr/lib/libgtest.a /usr/local/lib/libgtest.a && sudo ln -s /usr/lib/libgtest_main.a /usr/local/lib/libgtest_main.a
       - name: Google Test
         run: make gtest

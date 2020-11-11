@@ -5,6 +5,7 @@ on: push
 jobs:
   build_and_output_tests:
     runs-on: ubuntu-latest
+    container: bartaliszoltan/mosze:latest
     steps:
       - uses: actions/checkout@v2
       - name: Build
@@ -19,6 +20,7 @@ jobs:
 
   code_analysis:     
     runs-on: ubuntu-latest
+    container: bartaliszoltan/mosze:latest
     steps:
       - uses: actions/checkout@v2
       - name: Build
@@ -26,13 +28,9 @@ jobs:
       - name: Make *.sh files executable
         run: chmod +x ./*.sh     
 
-      - name: Install valgrind
-        run: sudo apt-get install valgrind
       - name: Check Leaks
         run: make check_leaks
 
-      - name: Install cppcheck
-        run: sudo apt-get install cppcheck
       - name: Run test_check_warnings.sh
         run: ./test_check_warnings.sh
 

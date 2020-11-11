@@ -1,7 +1,9 @@
 *
 !unit_tests
+!docker
 !Makefile
 !doxconf
+!Dockerfile
 !.gitignore
 !*.cpp
 !*.h
