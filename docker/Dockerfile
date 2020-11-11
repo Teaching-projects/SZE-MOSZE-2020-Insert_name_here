@@ -5,8 +5,10 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y \
   make \
   cppcheck \
   valgrind \
-  g++ \
   gcc \
+  g++ \
+  gcc-10 \
+  g++-10 \
   libgtest-dev \
   cmake \
   doxygen \
