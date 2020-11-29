@@ -10,6 +10,8 @@
 #include "JSON.h"
 #include "Hero.h"
 #include "Monster.h"
+#include "Map.h"
+#include "Game.h"
 
 
 
@@ -30,8 +32,8 @@ void bad_exit(int exitcode){
 
 int main(int argc, char** argv){
     if (argc != 2) bad_exit(1);
-    if (!std::filesystem::exists(argv[1])) bad_exit(2);
-
+    //if (!std::filesystem::exists(argv[1])) bad_exit(2);
+/*
     std::string hero_file;
     std::list<std::string> monster_files;
     try {
@@ -67,6 +69,25 @@ int main(int argc, char** argv){
                   << "  DMG: "<<hero.getDamage()<<std::endl
                   << "  ACD: "<<hero.getAttackCoolDown()<<std::endl
                   ;
-    } catch (const JSON::ParseException& e) {bad_exit(4);}
+    } catch (const JSON::ParseException& e) {bad_exit(4);}*/
+    std::string fname=argv[1];
+    Game game(fname);
+    std::string aaa="units/Dark_Wanderer.json";
+    Hero hero{Hero::parse(aaa)};
+    aaa="units/Fallen.json";
+    Monster monster01{Monster::parse(aaa)};
+    game.putHero(hero, 5, 1);
+    game.putMonster(monster01, 0, 1);
+    game.putMonster(monster01, 3, 1);
+    game.putMonster(monster01, 3, 1);
+    game.putMonster(monster01, 3, 1);
+   // Hero f{Hero::parse("units/Dart_Wanderer.json")};
+   // game.putHero(0,0);
+    //game.putMonster(f, 4, 3);
+    game.run();
+    //game.print();
+    
+    //map.printMap();
+    //std::cout<<map.get(1, 2);
     return 0;
 }

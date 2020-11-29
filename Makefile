@@ -1,5 +1,5 @@
 
-OBJS = main.o Monster.o Hero.o JSON.o
+OBJS = main.o Monster.o Hero.o JSON.o Game.o Map.o
 CFLAGS = -std=c++17 -Wall -Werror -g
 CC = g++-10
 OUT = a.out
@@ -9,7 +9,7 @@ JSONFILES:=  units/scenario1.json
 build: $(OBJS)
 	$(CC) $(CFLAGS) -o $(OUT) $(OBJS)
 
-main.o: main.cpp Hero.h Monster.h JSON.h
+main.o: main.cpp Hero.h Monster.h JSON.h Game.h Map.h
 	$(CC) $(CFLAGS) -c main.cpp
 
 Monster.o: Monster.cpp Monster.h JSON.h
@@ -20,6 +20,12 @@ Hero.o: Hero.cpp Hero.h JSON.h Monster.h
 
 JSON.o: JSON.cpp JSON.h
 	$(CC) $(CFLAGS) -c JSON.cpp
+
+Game.o: Game.cpp Game.h Hero.h Map.h
+	$(CC) $(CFLAGS) -c Game.cpp
+
+Map.o: Map.cpp Map.h
+	$(CC) $(CFLAGS) -c Map.cpp
 
 
 diff_test:
