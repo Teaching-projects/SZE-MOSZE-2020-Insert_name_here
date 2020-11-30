@@ -2,6 +2,7 @@
 #define MAP_H
 #include <string>
 #include <vector>
+#include<iostream>
 
 class Map{
 
@@ -23,5 +24,9 @@ type get(int x, int y) const{
 
 void setObject(char c,int x,int y){MapInVector[MapInVector.size()-y-1][x]=c;}
 
+class WrongIndexException : public std::runtime_error{
+    public:
+        WrongIndexException(const std::string& errMsg) : std::runtime_error(errMsg){}
+    };
 };
 #endif

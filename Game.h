@@ -29,22 +29,32 @@ class Game{
     Map gameMap;
     std::vector<MonsterData> monsters;
     HeroData hero={};
+    bool isMap=false;
     public:
 
-    Game(); // Empty Game
-    Game(std::string mapfilename){ gameMap = Map(mapfilename);}
+    Game(){}; // Empty Game
+    Game(std::string mapfilename){ gameMap = Map(mapfilename); isMap=true;}
     void print(){gameMap.printMap();}
-    void setMap(Map map){gameMap=map;}
+    void setMap(Map map){
+        if(this->hero.hero!=nullptr || this->monsters.size()!=0) throw AlreadyHasUnitsException("There are units on the map already.");
+        gameMap=map;
+        isMap=true;
+        }
+
     void putHero(Hero& hero, int x, int y){
+        if(!isMap) throw Map::WrongIndexException("No Map");
+        if(this->hero.hero!=nullptr && this->hero.hero->isAlive()) throw  AlreadyHasHeroException("The game already has a Hero.");
         if(gameMap.get(x,y)==1){
         this->hero.hero=&hero;
         this->hero.x=x;
         this->hero.y=y;
         gameMap.setObject('h',x,y);
         }
+        else throw OccupiedException("Wrong coordinate.");
     }
-    void putMonster(Monster monster, int x, int y){
 
+    void putMonster(Monster monster, int x, int y){
+        if(!isMap) throw Map::WrongIndexException("No Map");
         if(gameMap.get(x,y)==1){
             for (auto& it:monsters){
                 if (it.x==x && it.y==y){
@@ -55,11 +65,14 @@ class Game{
             }
             this->monsters.push_back( MonsterData (monster, x, y));
             gameMap.setObject('m',x,y);
-            }
+        }
+        else throw OccupiedException("Wrong coordinate.");
     }
 
 
     void run(){
+        if(!isMap || this->hero.hero==nullptr) throw NotInitializedException("The Game is not initialized properly.");
+
         int x=0, y=0;
         std::string input;
 

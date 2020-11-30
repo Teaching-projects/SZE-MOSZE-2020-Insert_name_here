@@ -20,7 +20,13 @@ const std::map<int,std::string> error_messages = {
     { 1 , "Bad number of arguments. Only a single scenario file should be provided." },
     { 2 , "The provided scenario file is not accessible." },
     { 3 , "The provided scenario file is invalid." },
-    { 4 , "JSON parsing error." }
+    { 4 , "JSON parsing error." },
+    { 5 , "The Game already has a Hero."},
+    { 6 , "The Game does not have a Map"},
+    { 7 , "Wrong coordinate."},
+    { 8 , "There are units on the map already."},
+    { 9 , "The Game is not initialized properly."}
+
 };
 
 void bad_exit(int exitcode){
@@ -32,11 +38,11 @@ void bad_exit(int exitcode){
 
 int main(int argc, char** argv){
     if (argc != 2) bad_exit(1);
-    //if (!std::filesystem::exists(argv[1])) bad_exit(2);
-/*
+    if (!std::filesystem::exists(argv[1])) bad_exit(2);
+
     std::string hero_file;
     std::list<std::string> monster_files;
-    try {
+    /*try {
         JSON scenario = JSON::parseFromFile(argv[1]); 
         if (!(scenario.count("hero")&&scenario.count("monsters"))) bad_exit(3);
         else {
@@ -47,8 +53,8 @@ int main(int argc, char** argv){
                 std::back_inserter(monster_files));
         }
     } catch (const JSON::ParseException& e) {bad_exit(4);}
-
-    try { 
+    */
+    /*try { 
         Hero hero{Hero::parse(hero_file)};
         std::list<Monster> monsters;
         for (const auto& monster_file : monster_files)
@@ -70,24 +76,25 @@ int main(int argc, char** argv){
                   << "  ACD: "<<hero.getAttackCoolDown()<<std::endl
                   ;
     } catch (const JSON::ParseException& e) {bad_exit(4);}*/
-    std::string fname=argv[1];
-    Game game(fname);
-    std::string aaa="units/Dark_Wanderer.json";
-    Hero hero{Hero::parse(aaa)};
-    aaa="units/Fallen.json";
-    Monster monster01{Monster::parse(aaa)};
-    game.putHero(hero, 5, 1);
-    game.putMonster(monster01, 0, 1);
-    game.putMonster(monster01, 3, 1);
-    game.putMonster(monster01, 3, 1);
-    game.putMonster(monster01, 3, 1);
-   // Hero f{Hero::parse("units/Dart_Wanderer.json")};
-   // game.putHero(0,0);
-    //game.putMonster(f, 4, 3);
-    game.run();
-    //game.print();
+
     
-    //map.printMap();
-    //std::cout<<map.get(1, 2);
+    Game game(argv[1]);
+    Hero hero{Hero::parse("units/Dark_Wanderer.json")};
+    Monster monster01{Monster::parse("units/Fallen.json")};
+    //game.putHero(hero, 5, 1);
+    try{
+    game.putHero(hero, 4, 1);
+    }
+    catch (const Game::AlreadyHasHeroException& e){bad_exit(5);}
+    catch (const Map::WrongIndexException& e){bad_exit(6);};
+    try{
+    //game.putMonster(monster01, 0, 1);
+    game.putMonster(monster01, 3, 1);
+    game.putMonster(monster01, 3, 1);
+    game.putMonster(monster01, 3, 1);
+    game.run();
+    }
+    catch (const Game::OccupiedException& e){bad_exit(7);}
+    catch (const Game::NotInitializedException& e){bad_exit(9);};
     return 0;
 }
