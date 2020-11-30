@@ -20,6 +20,7 @@
 
 class Hero : public Monster {
 private:
+	float defense_bonus_per_level=0;
 	float xp=0; ///< XP of the Hero
 	int level=1;
 	int maxhealth = health; ///< Maxhealth of the Hero
@@ -49,7 +50,7 @@ public:
 	 * \param damage Damage of the Hero
 	 * \param attackspeed Attack speed of the Hero
 	*/
-	Hero(const std::string& name, int health, int damage, float attackspeed, const int experience_per_level, const int health_point_bonus_per_level,
+	Hero(const std::string& name, int health, int damage, float attackspeed, float defense, float defense_bonus_per_level, const int experience_per_level, const int health_point_bonus_per_level,
 			const int damage_bonus_per_level, const float cooldown_multiplier_per_level);
 	/**
 	 * \brief Get XP of the Hero

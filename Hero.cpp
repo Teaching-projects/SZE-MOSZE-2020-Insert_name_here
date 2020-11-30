@@ -3,9 +3,10 @@
 #include <cmath>
 
 
-Hero::Hero(const std::string& name, int health, int damage, float attackspeed, const int experience_per_level, const int health_point_bonus_per_level,
+Hero::Hero(const std::string& name, int health, int damage, float attackspeed, float defense, float defense_bonus_per_level, const int experience_per_level, const int health_point_bonus_per_level,
 			const int damage_bonus_per_level, const float cooldown_multiplier_per_level):
-					Monster(name, health, damage, attackspeed),
+					Monster(name, health, damage, attackspeed, defense),
+					defense_bonus_per_level(defense_bonus_per_level),
 					experience_per_level(experience_per_level), 			
 					health_point_bonus_per_level(health_point_bonus_per_level),
 					damage_bonus_per_level(damage_bonus_per_level), 		
@@ -26,6 +27,7 @@ void Hero::lvlUp() {
 		damage += damage_bonus_per_level;
 		xp -= experience_per_level;
 		attackspeed *= cooldown_multiplier_per_level;
+		defense+=defense_bonus_per_level;
 		level++;
 };
 
@@ -43,6 +45,8 @@ Hero Hero::parse(const std::string& fname) {
     file.get<int>("base_health_points"),
     file.get<int>("base_damage"),
     file.get<float>("base_attack_cooldown"),
+	file.get<float>("defense"),
+	file.get<float>("defense_bonus_per_level"),
     file.get<int>("experience_per_level"),
     file.get<int>("health_point_bonus_per_level"),
     file.get<int>("damage_bonus_per_level"),
