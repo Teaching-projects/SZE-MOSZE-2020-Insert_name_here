@@ -26,6 +26,7 @@
 		int health; ///< Health of the Monster.
 		float damage; ///< Damage of the Monster.
 		float attackspeed; ///< Attack speed of the Monster.
+		float defense;
 		/**
 		 *  \brief This function calls the right function with the right parameters for adjusting Health.
 		 *  \param defender Defending unit
@@ -44,7 +45,7 @@
 		 * \param damage Damage of the Monster
 		 * \param attackspeed Attack speed of the Monster
 		*/
-		Monster(const std::string& name, int health, int damage, const float attackspeed);
+		Monster(const std::string& name, int health, int damage, const float attackspeed, float defense);
 		/// This function reduces the Health of a Monster based on the Attacker's damage.
 		float reduceHealthByDamage(const Monster& attacker /** [in] Attacker unit. */);	
 		/**
@@ -65,6 +66,8 @@
 		 * \return Monster's AttackSpeed
 		*/
 		float getAttackCoolDown() const;
+
+		float getDefense() {return defense;}
 		/**
 		 * \brief Get Name of the Monster
 		 * \param none

@@ -20,6 +20,7 @@
 
 class Hero : public Monster {
 private:
+	float defense_bonus_per_level=0;
 	float xp=0; ///< XP of the Hero
 	int level=1;
 	int maxhealth = health; ///< Maxhealth of the Hero
@@ -27,6 +28,8 @@ private:
     int health_point_bonus_per_level=0;
     float damage_bonus_per_level=0;
     float cooldown_multiplier_per_level=0;
+	int light_radius;
+	int light_radius_bonus_per_level=1;
 	/**
 	 * \brief Function responsible for settting xp for the Hero and calling lvlup function if necessary.
 	 * \param damagePoints Dealt damage to the defender, used to calculate xp given to the Hero.
@@ -49,14 +52,15 @@ public:
 	 * \param damage Damage of the Hero
 	 * \param attackspeed Attack speed of the Hero
 	*/
-	Hero(const std::string& name, int health, int damage, float attackspeed, const int experience_per_level, const int health_point_bonus_per_level,
-			const int damage_bonus_per_level, const float cooldown_multiplier_per_level);
+	Hero(const std::string& name, int health, int damage, float attackspeed, float defense, float defense_bonus_per_level, const int experience_per_level, const int health_point_bonus_per_level,
+			const int damage_bonus_per_level, const float cooldown_multiplier_per_level, int light_radiusint, int light_radius_bonus_per_level);
 	/**
 	 * \brief Get XP of the Hero
 	 * \param none
 	 * \return Hero's XP
 	*/
 	int getXP();
+	int getLight_radius(){return light_radius;}
 	int getMaxHealthPoints(){return maxhealth;}
 	int getLevel(){return level;}
 	/// This function parses the .json files for the Hero.

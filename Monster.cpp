@@ -5,7 +5,7 @@
 
 
 
-Monster::Monster(const std::string& name, int health, int damage, const float attackspeed) : name(name), health(health), damage(damage), attackspeed(attackspeed) {}
+Monster::Monster(const std::string& name, int health, int damage, const float attackspeed, float defense) : name(name), health(health), damage(damage), attackspeed(attackspeed), defense(defense) {}
 const std::string& Monster::getName() const { return  name; }
 float Monster::getDamage() const { return damage; }
 int Monster::getHealthPoints() const { return health; }
@@ -13,9 +13,10 @@ float Monster::getAttackCoolDown() const { return attackspeed; }
 
 float Monster::reduceHealthByDamage(const Monster& attacker) {
 	float gainedxp;
-	if (health - attacker.getDamage() >= 0) {
-		gainedxp = attacker.getDamage();
-		health -= attacker.getDamage();
+	if (health + defense - attacker.getDamage() >= 0) {
+		gainedxp = attacker.getDamage() - defense;
+		if (gainedxp<0) gainedxp=0;
+		health -= attacker.getDamage() + defense;
 	}
 	else {
 		gainedxp = health;
@@ -42,7 +43,8 @@ Monster Monster::parse(const std::string& fname) {
     P.get<std::string>("name"),
     P.get<int>("health_points"),
     P.get<int>("damage"),
-    P.get<float>("attack_cooldown")
+    P.get<float>("attack_cooldown"),
+	P.get<float>("defense")
   );
 }
 

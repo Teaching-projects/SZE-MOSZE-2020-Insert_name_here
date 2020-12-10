@@ -93,10 +93,9 @@ TEST(ParserTest, Missing_Key){
 TEST(ParserTest, ParseMonster){   
     JSON M1;
     M1=JSON::StringToJSON("{\"name\":\"Rotfiend\",\"damage\": 35},\"health_points\":100,\"attack_cooldown\": 1.25");  
-    Monster M2=Monster::parse("{\"name\":\"Rotfiend\",\"damage\": 35},\"health_points\":100,\"attack_cooldown\": 1.25");
-    EXPECT_EQ(M1.get<std::string>("name"),M2.getName())<<"names are not equal";
-    EXPECT_EQ(M1.get<int>("health_points"),M2.getHealthPoints())<<"healthpoints are not equal";
-    EXPECT_EQ(M1.get<int>("damage"),M2.getDamage())<<"damages are not equal";       
+    EXPECT_EQ(M1.get<std::string>("name"),"Rotfiend")<<"names are not equal";
+    EXPECT_EQ(M1.get<int>("health_points"),100)<<"healthpoints are not equal";
+    EXPECT_EQ(M1.get<int>("damage"),35)<<"damages are not equal";       
 }
 
 TEST(ScenarioTest, Scenario){

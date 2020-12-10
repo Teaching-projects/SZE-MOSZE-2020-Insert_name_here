@@ -12,8 +12,10 @@
 !*.sh
 !*.yml
 !*.txt
+!*.mp4
 
 !expected_output.txt
 !units
+!videos
 !.github
 !workflows
