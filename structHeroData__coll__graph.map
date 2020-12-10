@@ -1,0 +1,5 @@
+<map id="HeroData" name="HeroData">
+<area shape="rect" id="node1" title=" " alt="" coords="5,171,89,197"/>
+<area shape="rect" id="node2" href="$classHero.html" title="Hero class." alt="" coords="21,81,74,108"/>
+<area shape="rect" id="node3" href="$classMonster.html" title="Monster class." alt="" coords="10,5,85,32"/>
+</map>
