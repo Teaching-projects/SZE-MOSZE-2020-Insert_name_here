@@ -1,0 +1,15 @@
+==5652== Memcheck, a memory error detector
+==5652== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==5652== Using Valgrind-3.13.0 and LibVEX; rerun with -h for copyright info
+==5652== Command: ./a.out mapfile
+==5652== Parent PID: 5651
+==5652== 
+==5652== 
+==5652== HEAP SUMMARY:
+==5652==     in use at exit: 0 bytes in 0 blocks
+==5652==   total heap usage: 153 allocs, 153 frees, 146,222 bytes allocated
+==5652== 
+==5652== All heap blocks were freed -- no leaks are possible
+==5652== 
+==5652== For counts of detected and suppressed errors, rerun with: -v
+==5652== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
