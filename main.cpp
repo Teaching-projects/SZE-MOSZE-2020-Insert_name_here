@@ -17,7 +17,7 @@
 
 
 const std::map<int,std::string> error_messages = {
-    { 1 , "Bad number of arguments. Only a single scenario file should be provided." },
+    { 1 , "Bad number of arguments. Only a single mapfile should be provided." },
     { 2 , "The provided scenario file is not accessible." },
     { 3 , "The provided scenario file is invalid." },
     { 4 , "JSON parsing error." },
@@ -42,58 +42,33 @@ int main(int argc, char** argv){
 
     std::string hero_file;
     std::list<std::string> monster_files;
-    /*try {
-        JSON scenario = JSON::parseFromFile(argv[1]); 
-        if (!(scenario.count("hero")&&scenario.count("monsters"))) bad_exit(3);
-        else {
-            hero_file=scenario.get<std::string>("hero");
-            std::istringstream monsters(scenario.get<std::string>("monsters"));
-            std::copy(std::istream_iterator<std::string>(monsters),
-                std::istream_iterator<std::string>(),
-                std::back_inserter(monster_files));
-        }
-    } catch (const JSON::ParseException& e) {bad_exit(4);}
-    */
-    /*try { 
-        Hero hero{Hero::parse(hero_file)};
-        std::list<Monster> monsters;
-        for (const auto& monster_file : monster_files)
-            monsters.push_back(Monster::parse(monster_file));        
-
-        while (hero.isAlive() && !monsters.empty()) {
-            std::cout 
-                << hero.getName() << "(" << hero.getLevel()<<")"
-                << " vs "
-                << monsters.front().getName()
-                <<std::endl;
-            hero.fightTilDeath(monsters.front());
-            if (!monsters.front().isAlive()) monsters.pop_front();
-        }
-        std::cout << (hero.isAlive() ? "The hero won." : "The hero died.") << std::endl;
-        std::cout << hero.getName() << ": LVL" << hero.getLevel() << std::endl
-                  << "   HP: "<<hero.getHealthPoints()<<"/"<<hero.getMaxHealthPoints()<<std::endl
-                  << "  DMG: "<<hero.getDamage()<<std::endl
-                  << "  ACD: "<<hero.getAttackCoolDown()<<std::endl
-                  ;
-    } catch (const JSON::ParseException& e) {bad_exit(4);}*/
-
     
+
+
+
+    try{
     Game game(argv[1]);
     Hero hero{Hero::parse("units/Dark_Wanderer.json")};
     Monster monster01{Monster::parse("units/Fallen.json")};
-    //game.putHero(hero, 5, 1);
-    try{
-    game.putHero(hero, 4, 1);
-    }
-    catch (const Game::AlreadyHasHeroException& e){bad_exit(5);}
-    catch (const Map::WrongIndexException& e){bad_exit(6);};
-    try{
-    //game.putMonster(monster01, 0, 1);
-    game.putMonster(monster01, 3, 1);
-    game.putMonster(monster01, 3, 1);
-    game.putMonster(monster01, 3, 1);
+    Monster monster02{Monster::parse("units/Zombie.json")};
+    Monster monster03{Monster::parse("units/Zombie.json")};
+    Monster monster04{Monster::parse("units/Fallen.json")};
+    
+    
+    game.putHero(hero, 12, 5);
+    game.putMonster(monster01, 11, 5);
+    game.putMonster(monster02, 6, 1);
+    game.putMonster(monster03, 7, 1);
+    game.putMonster(monster04, 8, 1);
+    game.putMonster(monster01, 11, 4);
+    game.putMonster(monster01, 10, 4);
+
     game.run();
+    
     }
+    catch (const JSON::ParseException& e) {bad_exit(4);}
+    catch (const Game::AlreadyHasHeroException& e){bad_exit(5);}
+    catch (const Map::WrongIndexException& e){bad_exit(6);}
     catch (const Game::OccupiedException& e){bad_exit(7);}
     catch (const Game::NotInitializedException& e){bad_exit(9);};
     return 0;

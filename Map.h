@@ -1,8 +1,13 @@
 #ifndef MAP_H
 #define MAP_H
+
+//#include"Game.h"
 #include <string>
 #include <vector>
 #include<iostream>
+
+
+//class Game{};
 
 class Map{
 
@@ -16,6 +21,7 @@ public:
 Map(){};
 Map(std::string filename);
 void printMap();
+void printMap(const int x,const int y,const int radius, std::string fname);
 
 type get(int x, int y) const{
     if(MapInVector[MapInVector.size()-y-1][x]=='#')return Wall;

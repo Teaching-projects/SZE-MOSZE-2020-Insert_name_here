@@ -4,7 +4,7 @@ CFLAGS = -std=c++17 -Wall -Werror -g
 CC = g++-10
 OUT = a.out
 VLGRNDFLAGS:= --leak-check=full --error-exitcode=1 --log-file=memory_leaks.txt
-JSONFILES:=  units/scenario1.json
+FILES:=  mapfile
 
 build: $(OBJS)
 	$(CC) $(CFLAGS) -o $(OUT) $(OBJS)
@@ -30,10 +30,9 @@ Map.o: Map.cpp Map.h
 
 diff_test:
 	diff output1.txt real_output1.txt
-	diff output2.txt real_output2.txt
 
 check_leaks:
-	valgrind $(VLGRNDFLAGS) ./$(OUT) $(JSONFILES)
+	valgrind $(VLGRNDFLAGS) ./$(OUT) $(FILES) < input.txt
 
 gtest:
 	cd unit_tests && cmake CMakeLists.txt
